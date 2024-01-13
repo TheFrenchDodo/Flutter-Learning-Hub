@@ -6,7 +6,6 @@ import 'package:flutter_test_application_1/components/my_bottomwidget.dart';
 import 'package:flutter_test_application_1/components/my_drawer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_test_application_1/components/my_textfield.dart';
-// import 'package:flutter_test_application_1/services/delete_account.dart';
 
 
 class MyProfile extends StatelessWidget {
@@ -171,8 +170,6 @@ class MyProfile extends StatelessWidget {
       }
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {

@@ -30,7 +30,7 @@ class LoginPage extends StatelessWidget{
 
     //catch any errors
     catch (e) {
-      if (context.mounted){ // Found on Internet to resolve "Don't use 'BuildContext' across async gaps around showDialog"
+      if (context.mounted){ 
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
