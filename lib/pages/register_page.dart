@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_application_1/services/auth/auth_service.dart';
-import 'package:flutter_test_application_1/components/my_button.dart';
+import 'package:flutter_test_application_1/components/my_auth_button.dart';
 import 'package:flutter_test_application_1/components/my_textfield.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class RegisterPage extends StatelessWidget{
   final TextEditingController _emailController = TextEditingController();
@@ -15,27 +17,41 @@ class RegisterPage extends StatelessWidget{
   void register(BuildContext context){
     final auth = AuthService();
     if (_passwordController.text == _confirmPasswordController.text) {
+
       try{
         auth.signUpWithEmailPassword(
           _emailController.text, _passwordController.text,
         );
+
+        // login page redirection after registration  
+        ElevatedButton(
+          onPressed: (){
+            Navigator.pushNamed(context, "/login");
+          },
+          child: Text(AppLocalizations.of(context)!.login),
+        );
+
       } catch (e) {
+        if (context.mounted){
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
             title: Text(e.toString()),
           ),
         );
+        }
       }
     } 
     
     else{
+      if (context.mounted){
       showDialog(
         context: context,
-        builder: (context) => const AlertDialog(
-          title: Text("Password don't match"),
+        builder: (context) => AlertDialog(
+          title: Text(AppLocalizations.of(context)!.passwords_dont_match),
         ),
       );
+      }
     }
   }
 
@@ -45,7 +61,8 @@ class RegisterPage extends StatelessWidget{
       backgroundColor: Theme.of(context).colorScheme.background,
       
       appBar: AppBar(
-        title: const Text("register_page"),
+        title: Text(AppLocalizations.of(context)!.register),
+        backgroundColor: Theme.of(context).colorScheme.tertiary
       ),
 
       body: SingleChildScrollView(
@@ -63,7 +80,8 @@ class RegisterPage extends StatelessWidget{
               const SizedBox(height: 30),
 
               Text(
-                "Let's create an account", style: TextStyle(color: Theme.of(context).colorScheme.primary,
+                "Let's create an account", 
+                style: TextStyle(color: Theme.of(context).colorScheme.primary,
                 fontSize: 16,
                 ),
               ),
@@ -71,8 +89,8 @@ class RegisterPage extends StatelessWidget{
               const SizedBox(height: 25),
 
               MyTextField(
-                hintText: "Email",
-                obsureText: false, 
+                hintText: "email@example.com",
+                obscureText: false, 
                 controller: _emailController,
               ),
 
@@ -80,8 +98,8 @@ class RegisterPage extends StatelessWidget{
 
               // Password texfield
               MyTextField(
-                hintText: "Password",
-                obsureText: true,
+                hintText: AppLocalizations.of(context)!.password,
+                obscureText: true,
                 controller: _passwordController,
                 ),
 
@@ -89,16 +107,16 @@ class RegisterPage extends StatelessWidget{
 
               // Confirm password textfield
               MyTextField(
-                hintText: "Confirm password",
-                obsureText: true,
+                hintText: AppLocalizations.of(context)!.confirm_password,
+                obscureText: true,
                 controller: _confirmPasswordController,
                 ),
 
                 const SizedBox(height: 25),
 
                 // Register button
-                MyButton(
-                  text: "Register",
+                MyAuthButton(
+                  text: AppLocalizations.of(context)!.register,
                   onTap: () => register(context),
                 ),
 
@@ -107,16 +125,20 @@ class RegisterPage extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have an account ? ",
-                        style: 
-                            TextStyle(color: Theme.of(context).colorScheme.primary),
+                        AppLocalizations.of(context)!.already_member,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 17
+                        ),
                     ),
+                    SizedBox(width: 0, height: 40),
                     GestureDetector(
                       onTap: onTap,
                       child: Text(
-                        "Login now",
+                        AppLocalizations.of(context)!.login_now,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          fontSize: 17,
                           color: Theme.of(context).colorScheme.primary
                         ),
                       ),

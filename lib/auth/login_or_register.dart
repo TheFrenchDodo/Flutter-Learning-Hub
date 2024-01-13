@@ -22,7 +22,7 @@ import 'package:flutter_test_application_1/pages/register_page.dart';
   @override
   Widget build(BuildContext context){
     if (showLoginPage){
-      return LoginScreen(
+      return LoginPage(
         onTap: togglePage,
       );
     } else {

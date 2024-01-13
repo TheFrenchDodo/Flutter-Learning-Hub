@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_application_1/auth/login_or_register.dart';
 import 'package:flutter_test_application_1/pages/home_page.dart';
 
+
 class AuthGate extends StatelessWidget{
   const AuthGate({super.key});
 
@@ -17,7 +18,10 @@ class AuthGate extends StatelessWidget{
           if(snapshot.hasData){
             return HomePage();
           }
-
+          // else if(snapshot.hasData != true){
+          //   MyCircularIndicator();    // jsp si ça marche
+          //   return LoginOrRegister();
+          // }
           else{
             return const LoginOrRegister();
           }

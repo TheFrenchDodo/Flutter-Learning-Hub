@@ -1,16 +1,68 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/pages/homescreen.dart';
+import 'package:flutter_test_application_1/components/my_bottomwidget.dart';
+import 'package:flutter_test_application_1/components/my_drawer.dart';
+import 'package:flutter_test_application_1/themes/theme_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SettingsScreen extends StatefulWidget {
+
+class SettingsScreen extends StatelessWidget {
+  final TextEditingController textFieldController = TextEditingController();
+  final String retrievedData = "";
+
   @override
-  SettingsScreenState createState() => SettingsScreenState();
-}
+  Widget build(BuildContext context){
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.settings),
+        automaticallyImplyLeading: true, // top left button
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
+        //foregroundColor: Theme.of(context).colorScheme.primary,
+        //titleTextStyle: TextStyle(
+        //   color: Colors.black,
+        //   fontSize: 20),
+        // elevation: 0,
+      ),
+      drawer: const MyDrawer(),
+      body: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.tertiary,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        margin: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children:[
+            Text(AppLocalizations.of(context)!.dark_mode),
+            Switch(
+              value: Provider.of<ThemeProvider>(context, listen: false).isDarkMode, 
+              onChanged: (value) => Provider.of<ThemeProvider>(context, listen: false).toggleTheme(),
+            ),
+          ],
+        ),
+      ),
+      
+      // Add a button to navigate to the 'Info' page
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => InfoPage(),
+      //       ),
+      //     );
+      //   },
+      //   child: Icon(Icons.info),
+      // ),
 
-class SettingsScreenState extends State<SettingsScreen> {
-  TextEditingController textFieldController = TextEditingController();
-  String retrievedData = "";
+      bottomNavigationBar: BottomWidget(),
+    );
+  }
 
+  /*
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +103,8 @@ class SettingsScreenState extends State<SettingsScreen> {
                   ElevatedButton(
                     onPressed: () async {
                       // Call retrieveData method and update the retrievedData state
-                      await retrieveData();
-                      setState(() {});
+                      //await retrieveData();   ///--- à corriger ---///
+                      //setState(() {});
                     },
                     child: Text("Retrieve Data"),
                   ),
@@ -91,20 +143,22 @@ class SettingsScreenState extends State<SettingsScreen> {
       ),
       bottomNavigationBar: BottomWidget(),
     );
-  }
+  }*/
 
   Future<void> storeData(String data) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString("stored_data", data);
   }
 
-  Future<void> retrieveData() async {
-    final prefs = await SharedPreferences.getInstance();
-    final storedData = prefs.getString("stored_data") ?? "No data stored";
-    setState(() {
-      retrievedData = storedData;
-    });
-  }
+  //--- à corriger ---//
+
+  // Future<void> retrieveData() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final storedData = prefs.getString("stored_data") ?? "No data stored";
+  //   setState(() {
+  //     retrievedData = storedData;
+  //   });
+  // }
 
   Future<void> clearData() async{
     final prefs = await SharedPreferences.getInstance();

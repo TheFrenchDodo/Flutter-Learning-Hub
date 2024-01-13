@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/services/auth/auth_service.dart';
+import 'package:flutter_test_application_1/pages/home_page.dart';
+import 'package:flutter_test_application_1/pages/my_profile.dart';
 import 'package:flutter_test_application_1/pages/learningscreen.dart';
 import 'package:flutter_test_application_1/pages/settingsscreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
 
-    void logout() {
-    final auth = AuthService();
-    auth.signOut();
-  }
-
   @override
   Widget build(BuildContext context){
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -23,22 +20,29 @@ class MyDrawer extends StatelessWidget {
               //logo
               DrawerHeader(
                 child: Center(
-                  child: Icon(
-                    Icons.message,
-                  color: Theme.of(context).colorScheme.primary,
-                  size: 40,
+                  child: Image.asset(
+                    'assets/rau_logo.png', 
+                    width: 80,
+                    height: 80,
+                  ),
                   ),
                 ),
-              ),
 
-              // home list tile
+              // home tile
               Padding(
                 padding: const EdgeInsets.only(left: 25.0),
                 child: ListTile(
-                  title: const Text("H O M E"),
+                  title: Text(AppLocalizations.of(context)!.home),
                   leading: const Icon(Icons.home),
                   onTap: () {
                     Navigator.pop(context);
+
+                     Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      )
+                    );
                   },
                 ),
               ),
@@ -47,7 +51,7 @@ class MyDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25.0),
                 child: ListTile(
-                  title: const Text("S E T T I N G S"),
+                  title: Text(AppLocalizations.of(context)!.settings),
                   leading: const Icon(Icons.settings),
                   onTap: () {
                     // pop the drawer
@@ -68,13 +72,13 @@ class MyDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25.0),
                 child: ListTile(
-                  title: const Text("L E A R N I N G "),
+                  title: Text(AppLocalizations.of(context)!.learning),
                   leading: const Icon(Icons.school),
                   onTap: () {
                     // pop the drawer
                     Navigator.pop(context);
 
-                    // navigate to the settings
+                    // navigate to the learning
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -84,22 +88,29 @@ class MyDrawer extends StatelessWidget {
                   },
                 ),
               ),
-
-
-
             ],
           ),
 
-          // lougout list tile
+          // profile tile
           Padding(
             padding: const EdgeInsets.only(left: 25.0, bottom: 25),
             child: ListTile(
-              title: const Text("L O G O U T"),
-              leading: const Icon(Icons.logout),
-              onTap: logout,
+              title: Text(AppLocalizations.of(context)!.my_profile),
+              leading: const Icon(Icons.account_box),
+              onTap: () {
+                    // pop the drawer
+                    Navigator.pop(context);
+
+                    // navigate to the learning
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MyProfile(),
+                      )
+                    );
+                  },
             ),
           ),
-
         ],
       ),
     );

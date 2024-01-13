@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_application_1/services/auth/auth_service.dart';
-import 'package:flutter_test_application_1/components/my_button.dart';
+import 'package:flutter_test_application_1/components/my_auth_button.dart';
 import 'package:flutter_test_application_1/components/my_textfield.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class LoginScreen extends StatelessWidget{
+class LoginPage extends StatelessWidget{
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  
+
   // tap to go to register page
   final void Function()? onTap;
 
-  LoginScreen({super.key, required this.onTap});
+  LoginPage({
+    super.key, 
+    required this.onTap
+    });
 
   // login method
-  void login(BuildContext context) {
+  void login(BuildContext context) async {
     final authService = AuthService();
 
     // try to login
     try {
-       authService.signInWithEmailPassword(
+       await authService.signInWithEmailPassword(
         _emailController.text,
         _passwordController.text,
       );
@@ -26,22 +30,26 @@ class LoginScreen extends StatelessWidget{
 
     //catch any errors
     catch (e) {
+      if (context.mounted){ // Found on Internet to resolve "Don't use 'BuildContext' across async gaps around showDialog"
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: Text(e.toString()),
         ),
       );
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       
       appBar: AppBar(
-        title: const Text("login_page"),
+        title: Text(AppLocalizations.of(context)!.login),
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -51,7 +59,7 @@ class LoginScreen extends StatelessWidget{
             SingleChildScrollView(
               child: Column(
                 children:[
-                // logo
+
               const SizedBox(height: 30),
               Icon(
                 Icons.tag_faces_outlined,
@@ -63,8 +71,10 @@ class LoginScreen extends StatelessWidget{
               
                 // Welcome back message
                 Text(
-                  "Hi, welcome back !", style: TextStyle(color: Theme.of(context).colorScheme.primary,
-                  fontSize: 16,
+                  AppLocalizations.of(context)!.welcome_back,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontSize: 16,
                   ),
                 ),
               
@@ -72,8 +82,8 @@ class LoginScreen extends StatelessWidget{
               
                 // email textfield
                 MyTextField(
-                  hintText: "Email",
-                  obsureText: false, 
+                  hintText: "email@example.com",
+                  obscureText: false, 
                   controller: _emailController,
                 ),
               
@@ -81,16 +91,16 @@ class LoginScreen extends StatelessWidget{
               
                 // password textfield
                 MyTextField(
-                  hintText: "Password",
-                  obsureText: true,
+                  hintText: AppLocalizations.of(context)!.password,
+                  obscureText: true,
                   controller: _passwordController,
                   ),
               
                   const SizedBox(height: 25),
                   
                   // login button
-                  MyButton(
-                    text: "Login",
+                  MyAuthButton(
+                    text: AppLocalizations.of(context)!.login,
                     onTap:() => login(context),
                   ),
               
@@ -99,18 +109,25 @@ class LoginScreen extends StatelessWidget{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Not a member ? ",
-                        style: 
-                            TextStyle(color: Theme.of(context).colorScheme.primary),
+                        AppLocalizations.of(context)!.not_a_member,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 17
+                        ),
                       ),
+                      SizedBox(width: 0, height: 40),
                       GestureDetector(
                         onTap: onTap,
                         child: Text(
-                          "Register now",
-                          style: TextStyle(fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.primary),
+                          AppLocalizations.of(context)!.register_now, 
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            color: Theme.of(context).colorScheme.primary,
+                            //backgroundColor: Theme.of(context).colorScheme.secondary
+                          ),
                         ),
-                      )
+                      ),
                     ],
                   )
                 ],

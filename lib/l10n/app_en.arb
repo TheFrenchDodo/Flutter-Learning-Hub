@@ -1,0 +1,136 @@
+{
+    "@@locale": "en",
+
+    "helloWorld": "Hello World!",
+    "@helloWorld": {
+      "description": "The conventional newborn programmer greeting"
+    },
+    "logout": "Log out",
+    "@logout": {
+      "description": "Logging out of this app"
+    },
+    "login": "Login",
+    "@login": {
+     "description": "Login into the app"
+    },
+     "register": "Register",
+     "@register": {
+      "description": "Register as new user"
+     },
+     "create_account_text": "Let's create an account",
+     "@create_account_text": {
+      "description": "Text that says Let's create an account"
+     },
+    "home": "H O M E",
+    "@home": {
+      "description": "Going to the home"
+    },
+    "settings": "S E T T I N G S",
+    "@settings": {
+      "description": "Going to the settings menu"
+    },
+    "learning": "L E A R N I N G",
+    "@learning": {
+      "description": "Let's learn  stuff"
+    },
+    "dark_mode": "Dark mode",
+    "@dark_mode": {
+      "description": "Going to the dark side"
+    },
+    "science": "Science",
+    "@science": {
+      "description": "Going to science"
+    },
+    "movie": "Movie",
+    "@movie":{
+      "description": "Netflix and Chill"
+    },
+    "entertainment": "Entertainment",
+    "@entertainment":{
+      "description": "Let's relax a bit"
+    },
+    "passwords_dont_match": "Password don't match",
+    "@passwords_dont_match": {
+      "description": "During the registration process, the user did provided a wrong password"
+    },
+    "error": "error",
+    "@error": {
+      "description": "When an error occurs"
+    },
+    "type_message": "Type a message",
+    "@type_message":{
+      "description": "Asking the user to type a message"
+    },
+    "my_profile": "M Y  P R O F I L E",
+    "@my_profile": {
+      "description": "Going to my profile settings page"
+    },
+    "delete_account": "Delete my account",
+    "@delete_account":{
+      "description": "Press here to delete your account"
+    },
+    "contact_page": "Contacts",
+    "@contact_page":{
+      "description": "List of all the contacts"
+    },
+    "welcome_back": "Hi, welcome back !",
+    "@welcome_back": {
+      "description": "Welcome back message"
+    },
+    "password": "Password",
+    "@password": {
+      "description": "Enter a password"
+    },
+    "not_a_member": "Not a membre yet ? ",
+    "@not_a_member": {
+      "description": "Asking the user if he's already a user"
+    },
+    "register_now": "Register now",
+    "@register_now":{
+      "description": "Click here to register now"
+    },
+    "already_member": "Already have an account ? ",
+    "@already_member": {
+      "description": "In case the user is already registered"
+    },
+    "login_now": "Login now",
+    "@login_now": {
+      "description": "offers the possibility to sign-in"
+    },
+    "confirm_password": "Confirm password",
+    "@confirm_password":{
+      "description": "Ask the user the confirm his password"
+    },
+    "confirm_logout": "Confirm log out ?",
+    "@confirm_logout":{
+      "description": "Ask confirmation about the logout to the user"
+    },
+    "cancel": "Cancel",
+    "@cancel":{
+      "description": "Offers cancel option for the user"
+    },
+    "confirm": "Confirm",
+    "@confirm": {
+      "description": "Offers confirm option to the user"
+    },
+    "logout_confirm_text": "Are you sure you want to log out ?",
+    "@logout_confirm_text":{
+      "description": "Text to ask the user about logging out"
+    },
+    "confirm_delete": "Confirm delete",
+    "@confirm_delete": {
+      "description": "Offers confirm option to the user ?"
+    },
+    "delete_confirm_text": "Are you sure you want to delete your account ?",
+    "@delete_confirm_text": {
+      "description": "Are you sure you want to delete your account ?"
+    },
+    "delete": "Delete",
+    "@delete":{
+      "description": "Offers delete choice to the user"
+    },
+    "unknown_user":"Unknown user",
+    "@unknown_user":{
+      "description": "When the user is unknown"
+    }
+  }

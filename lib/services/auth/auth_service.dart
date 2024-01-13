@@ -1,11 +1,35 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AuthService{
+
+class AuthService {
   //instance of auth
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  //final TextEditingController _passwordController = TextEditingController();
 
+  // get the current user
+  User? getCurrentUser(){
+    return _auth.currentUser;
+  }
+
+  // get profile
+  Future<void> getUserInfo() async {
+    final user = getCurrentUser();
+    if (user != null) {
+
+    final name = user.displayName;
+    final email = user.email;
+    final photoUrl = user.photoURL;
+    bool emailVerified = user.emailVerified;
+    String uid = user.uid;
+
+    print(
+      "name $name, email $email, photoURL $photoUrl, emailVerified $emailVerified, uid $uid"
+    );
+    }
+  }
+  
   //sign in
   Future<UserCredential> signInWithEmailPassword(String email, password) async{
     try{
@@ -47,20 +71,66 @@ class AuthService{
       );
 
         return userCredential;
+
     } on FirebaseAuthMultiFactorException catch (e) {
       throw Exception(e.code);
+      
     } catch (e) {
-    // Catch all other exceptions and throw a general exception
-      throw Exception('Error during sign up: $e');
+      throw 'Error during sign up: $e';
     }
   }
 
+  // // delete profile
+  // Future<void> deleteUser(context) async {
+
+  //   ///--- Delete User Account ---///
+  //   // // email textfield
+  //   // MyTextField(
+  //   //   hintText: "email@example.com",
+  //   //   obscureText: false, 
+  //   //   controller: _emailController,
+  //   // );
+
+  //   // const SizedBox(height: 16);
+    
+  //   // // password textfield
+  //   // MyTextField(
+  //   //   hintText: AppLocalizations.of(context)!.password,
+  //   //   obscureText: true,
+  //   //   controller: _passwordController,
+  //   // );
+
+  //   AuthCredential credential = EmailAuthProvider.credential(
+  //     email: getCurrentUser()!.email!,
+  //     password: _passwordController.text,
+  //   );
+
+  //   try {
+  //     await FirebaseAuth.instance.currentUser!.reauthenticateWithCredential(credential);
+  //     await FirebaseAuth.instance.currentUser!.delete();
+
+  //   ///--- Delete User Data ---///
+  //   String docID = FirebaseAuth.instance.currentUser!.uid;
+    
+  //   await _firestore
+  //     .collection("Users")
+  //     .doc(docID)
+  //     .delete();
+    
+  //   } catch (e) {
+  //     if (context.mounted){ // to resolve "Don't use 'BuildContext' across async gaps around showDialog" warning
+  //     showDialog(
+  //       context: context,
+  //       builder: (context) => AlertDialog(
+  //         title: Text(e.toString()),
+  //       ),
+  //     );
+  //     }
+  //   }
+  // }
 
   // sign out
   Future<void> signOut() async{
     return await _auth.signOut();
   }
-
-  // error
-
 }
