@@ -33,5 +33,9 @@
     "confirm_delete": "Verwijderen bevestigen",
     "delete_confirm_text": "Weet u zeker dat u uw account wilt verwijderen ?",
     "delete": "Verwijderen",
-    "unknown_user": "Onbekende gebruiker"
+    "unknown_user": "Onbekende gebruiker",
+    "your_name": "Uw volledige naam",
+    "edit_profile": "Profiel bewerken",
+    "edit_name_text": "Voer uw naam in",
+    "profile_updated": "Profiel bijgewerkt"
 }

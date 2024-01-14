@@ -91,13 +91,13 @@ class MyProfile extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Edit profile"),
+          title: Text(AppLocalizations.of(context)!.edit_profile),
           content: Column(
             children: [
-              Text("Edit profile"),
+              Text(AppLocalizations.of(context)!.your_name),
               SizedBox(height: 10),
               MyTextField(
-                hintText: "Edit profile",
+                hintText: AppLocalizations.of(context)!.edit_name_text,
                 controller: displayNameController,
                 obscureText: false,
               ),
@@ -113,14 +113,14 @@ class MyProfile extends StatelessWidget {
             ),
 
             TextButton(
-            // Confirm Delete button
+            // Confirm Update button
               onPressed: () {
                 editUser(context, displayNameController.text);
                 Navigator.of(context).pop(true);
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: Text("Account updated"),
+                    title: Text(AppLocalizations.of(context)!.profile_updated),
                   ),
                 );
               },

@@ -132,5 +132,21 @@
     "unknown_user":"Unknown user",
     "@unknown_user":{
       "description": "When the user is unknown"
+    },
+    "your_name": "Your full name",
+    "@your_name":{
+      "description": "Asking the user to enter his full name"
+    },
+    "edit_profile": "Edit profile",
+    "@edit_profile":{
+      "description": "Ask the user to edit his profile"
+    },
+    "edit_name_text": "Enter your name",
+    "@edit_name_text":{
+      "description": "Asking the user to enter his name"
+    },
+    "profile_updated": "The profile has been updated",
+    "@profile_updated":{
+      "description": "The profile has been updated"
     }
   }

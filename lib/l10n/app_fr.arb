@@ -33,5 +33,9 @@
     "confirm_delete": "Confirmer votre suppression",
     "delete_confirm_text": "Souhaitez-vous vraiment supprimer votre compte ?",
     "delete": "Supprimer",
-    "unknown_user": "Utilisateur inconnu"
+    "unknown_user": "Utilisateur inconnu",
+    "your_name": "Votre nom complet",
+    "edit_profile": "Modifier mon profil",
+    "edit_name_text": "Entrez votre nom",
+    "profile_updated": "Le profil a été mis à jour"
 }
