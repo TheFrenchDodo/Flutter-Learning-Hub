@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dorian/components/chat_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:dorian/components/my_circular_indicator.dart';
 import 'package:dorian/components/my_textfield.dart';
@@ -20,12 +21,12 @@ class ChatPage extends StatelessWidget{
   final ChatService _chatService = ChatService();
   final AuthService _authService = AuthService();
 
+  // send message
   void sendMessage()async{
-    if (_messageController.text.isEmpty){
+    if (_messageController.text.isNotEmpty){
       await _chatService.sendMessage(receiverID, _messageController.text);
+      _messageController.clear();
     }
-
-  _messageController.clear();
   }
 
   @override
@@ -48,7 +49,6 @@ class ChatPage extends StatelessWidget{
     );
   }
 
-
   // build message list
   Widget _buildMessageList(){
     String senderID = _authService.getCurrentUser()!.uid;
@@ -62,7 +62,6 @@ class ChatPage extends StatelessWidget{
 
         // loading
         if (snapshot.connectionState == ConnectionState.waiting){
-          //return const Text("Loading");
         return Center(
           child:
             MyCircularIndicator());
@@ -70,7 +69,8 @@ class ChatPage extends StatelessWidget{
 
         // return list view
         return ListView(
-          children: snapshot.data!.docs.map((doc) => _buildMessageItem(doc)).toList(),
+          children: 
+          snapshot.data!.docs.map((doc) => _buildMessageItem(doc)).toList(),
         );
       },
     );
@@ -79,34 +79,51 @@ class ChatPage extends StatelessWidget{
   // build message item
   Widget _buildMessageItem (DocumentSnapshot doc){
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-    return Text(data["message"]);
+
+    bool isCurrentUser = data["senderEmail"] == _authService.getCurrentUser()!.uid;
+    var alignment = isCurrentUser ? Alignment.centerRight : Alignment.centerLeft; 
+    
+    return Container(
+      alignment: alignment, 
+      // color: color, 
+      child: Column(
+        crossAxisAlignment: isCurrentUser ? CrossAxisAlignment.end: CrossAxisAlignment.start,
+        children:[
+          MyChatBubble(
+            message: data["message"], 
+            isCurrentUser: isCurrentUser
+            ),
+          
+        ],
+      ),
+    );
   }
 
   // build message input
-Widget _buildUserInput(context) {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(5, 0, 20, 10),
-    child: Row(
-      children: [
-        Expanded(
-          child: MyTextField(
-            hintText: AppLocalizations.of(context)!.type_message,
-            obscureText: false,
-            controller: _messageController,
+  Widget _buildUserInput(context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(5, 0, 20, 10),
+      child: Row(
+        children: [
+          Expanded(
+            child: MyTextField(
+              hintText: AppLocalizations.of(context)!.type_message,
+              obscureText: false,
+              controller: _messageController,
+            ),
           ),
-        ),
 
-        // send button
-        IconButton(
-          onPressed: sendMessage,
-          icon: const Icon(Icons.arrow_upward),
-          style: IconButton.styleFrom(
-            backgroundColor: Theme.of(context).colorScheme.tertiary, 
-            foregroundColor: Theme.of(context).colorScheme.inversePrimary,
-          ),
-        )
-      ],
-    )
+          // send button
+          IconButton(
+            onPressed: sendMessage,
+            icon: const Icon(Icons.arrow_circle_up_rounded),
+            style: IconButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.tertiary, 
+              foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+            ),
+          )
+        ],
+      )
     );
   }
 }

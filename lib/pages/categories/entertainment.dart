@@ -1,6 +1,6 @@
+import 'package:dorian/components/my_bottomwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:dorian/pages/learningscreen.dart';
 
 
 class Entertainment extends StatelessWidget {
@@ -8,24 +8,22 @@ class Entertainment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.entertainment),
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
         automaticallyImplyLeading: false,
+        centerTitle: true,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-
-          VideoCategoryButton(
-            icon: Icons.music_video,
-            category: AppLocalizations.of(context)!.entertainment,
-            videoIds: ['IesIsKMjB4Y', 'uzjA5d0QXv8'],
-          ),
           SizedBox(height: 16),
-          
-      ])
+      ],
+      ),
+      bottomNavigationBar: BottomWidget(),
     );
   }
 }

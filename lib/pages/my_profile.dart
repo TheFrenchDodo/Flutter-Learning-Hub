@@ -197,22 +197,22 @@ class MyProfile extends StatelessWidget {
             TextButton(
             // Confirm Delete button
               onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: Text(AppLocalizations.of(context)!.account_deleted),
-                  ),
-                );
+                // showDialog(
+                //   context: context,
+                //   builder: (context) => AlertDialog(
+                //     title: Text(AppLocalizations.of(context)!.account_deleted),
+                //   ),
+                // );
                 deleteUser(context, passwordController, getCurrentUsermail(), getCurrentUserUID());
-                Future.delayed(
-                  const Duration(seconds: 1), (){                
-                    Navigator.of(context).pop(true);
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const AuthGate())
-                    );
-                  },
-                );
+                // Future.delayed(
+                //   const Duration(seconds: 3), (){                
+                //     Navigator.of(context).pop(true);
+                //     Navigator.pushReplacement(
+                //       context,
+                //       MaterialPageRoute(builder: (context) => const AuthGate())
+                //     );
+                //   },
+                // );
               },
               child: Text(AppLocalizations.of(context)!.confirm),
             ),
@@ -244,19 +244,36 @@ class MyProfile extends StatelessWidget {
         builder: (context) => AlertDialog(
           title: Text(AppLocalizations.of(context)!.account_deleted),
         ),
+      );
+      Navigator.of(context).pop(true);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const AuthGate())
       ); 
     
-    } catch (e) {
-      if (context.mounted){ // to resolve "Don't use 'BuildContext' across async gaps around showDialog" warning
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(e.toString()),
-        ),
-      );
+      } catch (e) {
+        if (e is FirebaseAuthException) {
+          // Show a custom dialog for invalid password
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text(AppLocalizations.of(context)!.invalid_password),
+            ),
+          );
+        } else {
+          // Show the default error dialog for other errors
+          if (context.mounted) {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text(AppLocalizations.of(context)!.error),
+              ),
+            );
+          }
+          print(e);
+        }
       }
     }
-  }
 
   @override
   Widget build(BuildContext context) {

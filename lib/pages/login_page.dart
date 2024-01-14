@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dorian/services/auth/auth_service.dart';
 import 'package:dorian/components/my_auth_button.dart';
@@ -23,6 +24,7 @@ class LoginPage extends StatelessWidget{
     // try to login
     try {
        await authService.signInWithEmailPassword(
+        context,
         _emailController.text,
         _passwordController.text,
       );
@@ -30,13 +32,37 @@ class LoginPage extends StatelessWidget{
 
     //catch any errors
     catch (e) {
-      if (context.mounted){ 
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(e.toString()),
-        ),
-      );
+      if (e is FirebaseAuthException) {
+        if (e.code == 'invalid-email') {
+          if (context.mounted){ 
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text(e.toString()),
+              ),
+            );
+          }
+        }
+        if (e.code == 'channel-error') {
+          if (context.mounted){ 
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text(e.toString()),
+              ),
+            );
+          }
+        }
+        if (e.code == 'invalid-password') {
+          if (context.mounted){ 
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text(e.toString()),
+              ),
+            );
+          }
+        }
       }
     }
   }

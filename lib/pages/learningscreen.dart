@@ -1,9 +1,12 @@
+import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:dorian/components/my_bottomwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:dorian/components/my_drawer.dart';
 import 'package:dorian/pages/categories/entertainment.dart';
-import 'package:dorian/pages/categories/movies.dart';
+import 'package:dorian/pages/categories/news.dart';
 import 'package:dorian/pages/categories/sciences.dart';
 
 
@@ -13,6 +16,45 @@ class LearningScreen extends StatefulWidget {
 }
 
 class LearningScreenState extends State<LearningScreen> {
+
+  File? selectedFile;
+  Future<void> pickFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      setState(() {
+        selectedFile = File.fromRawPath(result.files.single.bytes!);
+      });
+
+      // Upload the selected file to Firestore
+      // await uploadFileToFirestore(selectedFile!);
+    }
+  }
+
+  // Future<void> uploadFileToFirestore(File file) async {
+  //   try {
+  //     // Convert file to bytes
+  //     List<int> fileBytes = await file.readAsBytes();
+
+  //     // Get a reference to the Firestore storage bucket
+  //     Reference storageReference = FirebaseStorage.instance.ref().child('uploads/${file.path.split('/').last}');
+
+  //     // Upload file to Firestore
+  //     await storageReference.putData(Uint8List.fromList(fileBytes));
+
+  //     // Get the download URL
+  //     String downloadURL = await storageReference.getDownloadURL();
+
+  //     // Store the download URL in Firestore or perform any other necessary actions
+  //     await FirebaseFirestore.instance.collection('uploaded_files').add({
+  //       'file_name': file.path.split('/').last,
+  //       'download_url': downloadURL,
+  //     });
+  //   } catch (e) {
+  //     print('Error uploading file to Firestore: $e');
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +81,6 @@ class LearningScreenState extends State<LearningScreen> {
                   },
                   icon: const Icon(
                     Icons.science,
-                    //color: Theme.of(context).colorScheme.tertiary,
                     size: 50,
                   ),
                   tooltip: AppLocalizations.of(context)!.science,
@@ -62,19 +103,18 @@ class LearningScreenState extends State<LearningScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Movies(),
+                      builder: (context) => News(),
                     ),
                   );
                 },
                 icon: const Icon(
-                  Icons.movie,
-                  //color: Theme.of(context).colorScheme.tertiary,
+                  Icons.newspaper,
                   size: 50,
                 ),
-                tooltip: AppLocalizations.of(context)!.movie,
+                tooltip: AppLocalizations.of(context)!.news,
               ),
               Text(
-                AppLocalizations.of(context)!.movie,
+                AppLocalizations.of(context)!.news,
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
                 ),
@@ -96,7 +136,6 @@ class LearningScreenState extends State<LearningScreen> {
                 },
                 icon: const Icon(
                   Icons.music_video,
-                  //color: Theme.of(context).colorScheme.tertiary,
                   size: 50,
                 ),
                 tooltip: AppLocalizations.of(context)!.entertainment,
@@ -111,100 +150,8 @@ class LearningScreenState extends State<LearningScreen> {
           ),
         ],
       ),
-      // bottom widget
       bottomNavigationBar: BottomWidget(),
       drawer: const MyDrawer(),
-    );
-  }
-}
-
-
-
-        //   SizedBox(height: 16),
-        //   VideoCategoryButton(
-        //     icon: Icons.local_movies,
-        //     category: AppLocalizations.of(context)!.movie,
-        //     videoIds: ['NAIzQFZACcw', 'AtT5WCCyzDU'],
-        //   ),
-        //   SizedBox(height: 16),
-
-        //   IconButton(
-        //     onPressed: Navigator.push(
-        //     context, 
-        //     MaterialPageRoute(
-        //       builder: (context) => Sciences()),
-        //     icon: const Icon(Icons.arrow_upward),
-        //   ),
-
-
-        //   VideoCategoryButton(
-        //     icon: Icons.music_video,
-        //     category: AppLocalizations.of(context)!.entertainment,
-        //     videoIds: ['0e3GPea1Tyg', 'K4FgLj5HVTo'],
-        //   ),
-        // ],
-      
-
-      // bottom widget
-      //bottomNavigationBar: BottomWidget(),
-
-
-class VideoCategoryButton extends StatelessWidget {
-  final IconData icon;
-  final String category;
-  final List<String> videoIds;
-
-  const VideoCategoryButton({
-    super.key,
-    required this.icon,
-    required this.category,
-    required this.videoIds,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => VideoListScreen(category: category, videoIds: videoIds),
-          ),
-        );
-      },
-      icon: Icon(icon),
-      label: Text(category),
-    );
-  }
-}
-
-class VideoListScreen extends StatelessWidget {
-  final String category;
-  final List<String> videoIds;
-
-  const VideoListScreen({
-    super.key,
-    required this.category,
-    required this.videoIds,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(category),
-      ),
-      body: ListView.builder(
-        itemCount: videoIds.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('Video Title ${index + 1}'),
-
-            // Add more details (thumbnail, duration,...)
-
-          );
-        },
-      ),
     );
   }
 }

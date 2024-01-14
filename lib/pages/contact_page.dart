@@ -56,10 +56,6 @@ class ContactPage extends StatelessWidget {
   // build list tile for user     // the 'Map' contains that user data
   Widget _buildUserListItem(Map<String, dynamic> userData,BuildContext context){
     if (userData["uid"] != _authService.getCurrentUser()?.uid){
-      // String name = userData["name"] ?? "test";
-      // print(userData);
-      // userData.addAll({"name": name});
-      // print(userData);
       String nameToShow = userData["email"].split("@")[0];
       return UserTile(
         text: nameToShow,
@@ -68,7 +64,6 @@ class ContactPage extends StatelessWidget {
             context,
             PageRouteBuilder(
               pageBuilder: (context, animation, secondaryAnimation) => ChatPage(
-                
                 receiverEmail: userData["email"],
                 receiverID: userData["uid"],
               ),

@@ -1,31 +1,31 @@
+import 'package:dorian/components/my_bottomwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:dorian/pages/learningscreen.dart';
 
 
-class Movies extends StatelessWidget {
-  Movies({super.key});
+class News extends StatelessWidget {
+  News({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.movie),
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
         automaticallyImplyLeading: false,
+        centerTitle: true,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
 
-          VideoCategoryButton(
-            icon: Icons.movie,
-            category: AppLocalizations.of(context)!.movie,
-            videoIds: ['IesIsKMjB4Y', 'uzjA5d0QXv8'],
-          ),
           SizedBox(height: 16),
           
-      ])
+      ],
+      ),
+      bottomNavigationBar: BottomWidget(),
     );
   }
 }

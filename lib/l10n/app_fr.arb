@@ -11,6 +11,7 @@
     "learning": "É D U C A T I O N",
     "dark_mode": "MODE NUIT \nest géré automatiquement en fonction \ndu thème de votre appareil",
     "science": "Sciences",
+    "news": "Les nouvelles",
     "movie": "film",
     "entertainment": "divertissement",
     "passwords_dont_match": "Les mots de passe ne correspondent pas",
@@ -38,5 +39,11 @@
     "edit_profile": "Modifier mon profil",
     "edit_name_text": "Entrez votre nom",
     "profile_updated": "Le profil a été mis à jour",
-    "account_deleted": "Compte supprimé"
+    "account_deleted": "Compte supprimé",
+    "invalid_password": "Mot de passe invalide, veuillez réessayer",
+    "weak_password": "Votre mot de passe est trop faible",
+    "invalid_email": "Adresse email invalide",
+    "email_already_in_use": "Cette adresse email est déjà utilisée",
+    "operation_not_allowed": "Cette opération n'est pas autorisée",
+    "channel_error": "Erreur de canal"
 }

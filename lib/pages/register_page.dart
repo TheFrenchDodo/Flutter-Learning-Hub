@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dorian/services/auth/auth_service.dart';
 import 'package:dorian/components/my_auth_button.dart';
@@ -16,10 +17,11 @@ class RegisterPage extends StatelessWidget{
   
   void register(BuildContext context){
     final auth = AuthService();
-    if (_passwordController.text == _confirmPasswordController.text) {
 
+    if (_passwordController.text == _confirmPasswordController.text) {
       try{
         auth.signUpWithEmailPassword(
+          context,
           _emailController.text,
           _passwordController.text,
         );
@@ -33,18 +35,28 @@ class RegisterPage extends StatelessWidget{
         );
 
       } catch (e) {
-        if (context.mounted){
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text(e.toString()),
-          ),
-        );
+        if (e is FirebaseAuthException) {
+          // Show a custom dialog for invalid password
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text("$e"),
+            ),
+          );
+        } else {
+          // Show the default error dialog for other errors
+          if (context.mounted) {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text(AppLocalizations.of(context)!.error),
+              ),
+            );
+          }
+          print(e);
         }
       }
-    } 
-    
-    else{
+    } else {
       if (context.mounted){
       showDialog(
         context: context,
@@ -81,8 +93,7 @@ class RegisterPage extends StatelessWidget{
                 color: Theme.of(context).colorScheme.primary,
               ),
               const SizedBox(height: 30),
-              Text(
-                "Let's create an account", 
+              Text(AppLocalizations.of(context)!.create_account_text, 
                 style: TextStyle(color: Theme.of(context).colorScheme.primary,
                 fontSize: 16,
                 ),

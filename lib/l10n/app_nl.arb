@@ -10,6 +10,7 @@
     "settings": "I N S T E L L I N G E N",
     "learning": "O N D E R W I J S",
     "dark_mode": "NACHT MODUS \ngebaseerd op het thema van uw apparaat",
+    "news²": "Nieuws",
     "science": "Wetenschappen",
     "movie": "film",
     "entertainment": "Ontspanning",
@@ -38,5 +39,11 @@
     "edit_profile": "Profiel bewerken",
     "edit_name_text": "Voer uw naam in",
     "profile_updated": "Profiel bijgewerkt",
-    "account_deleted": "Account verwijderd"
+    "account_deleted": "Account verwijderd",
+    "invalid_password": "Ongeldig wachtwoord, probeer opnieuw",
+    "weak_password": "Uw wachtwoord is te week",
+    "invalid_email": "Ongeldig e-mailadres",
+    "email_already_in_use": "Dit e-mailadres is al in gebruik",
+    "operation_not_allowed": "Deze actie is niet toegestaan",
+    "channel_error": "Kanaal fout"
 }

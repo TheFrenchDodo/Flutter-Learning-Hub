@@ -8,7 +8,6 @@ class ChatService{
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //get user stream
-
   Stream<List<Map<String,dynamic>>> getUsersStream(){
     return _firestore.collection("Users").snapshots().map((snapshot){
       return snapshot.docs.map((doc){
@@ -22,7 +21,6 @@ class ChatService{
 
   // send message
   Future<void> sendMessage(String receiverID, message) async{
-    
     // get current user info
     final String currentUserID = _auth.currentUser!.uid;
     final String currentUserEmail = _auth.currentUser!.email!;
@@ -38,29 +36,29 @@ class ChatService{
       timestamp: timestamp,
     );
 
-    // chat room
+    // construct chat room ID
     List<String> userIDs = [currentUserID, receiverID];
     userIDs.sort(); 
-    String chatRoomID = userIDs.join("-");
+    String chatRoomID = userIDs.join("_");
 
+    // add new message to the database
     await _firestore
     .collection("chat_rooms")
     .doc(chatRoomID)
     .collection("messages")
     .add(newMessage.toMap());
-
   }
 
   // get message
   Stream<QuerySnapshot> getMessages(String userID, otherUserID){
     List<String> userIDs = [userID, otherUserID];
     userIDs.sort();
-    String chatRoomID = userIDs.join("-");
+    String chatRoomID = userIDs.join("_");
 
     return _firestore
     .collection("chat_rooms")
     .doc(chatRoomID)
-    .collection("message")
+    .collection("messages")
     .orderBy("timestamp", descending: false)
     .snapshots();
   }

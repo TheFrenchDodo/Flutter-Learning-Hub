@@ -15,11 +15,11 @@
     },
      "register": "Register",
      "@register": {
-      "description": "Register as new user"
+      "description": "Registering into the app"
      },
      "create_account_text": "Let's create an account",
      "@create_account_text": {
-      "description": "Text that says Let's create an account"
+      "description": "Creating an account"
      },
     "home": "H O M E",
     "@home": {
@@ -35,7 +35,7 @@
     },
     "dark_mode": "DARK MODE \nis set automatically based on your device theme",
     "@dark_mode": {
-      "description": "Going to the dark side"
+      "description": "Setting the dark mode"
     },
     "science": "Science",
     "@science": {
@@ -43,11 +43,11 @@
     },
     "movie": "Movie",
     "@movie":{
-      "description": "Netflix and Chill"
+      "description": "Going to movie"
     },
     "entertainment": "Entertainment",
     "@entertainment":{
-      "description": "Let's relax a bit"
+      "description": "Going to entertainment"
     },
     "passwords_dont_match": "Password don't match",
     "@passwords_dont_match": {
@@ -55,7 +55,7 @@
     },
     "error": "error",
     "@error": {
-      "description": "When an error occurs"
+      "description": "An error occurred"
     },
     "type_message": "Type a message",
     "@type_message":{
@@ -79,7 +79,7 @@
     },
     "password": "Password",
     "@password": {
-      "description": "Enter a password"
+      "description": "Asking the user to provide his password"
     },
     "not_a_member": "Not a membre yet ? ",
     "@not_a_member": {
@@ -91,7 +91,7 @@
     },
     "already_member": "Already have an account ? ",
     "@already_member": {
-      "description": "In case the user is already registered"
+      "description": "Asking the user if he's already a user"
     },
     "login_now": "Login now",
     "@login_now": {
@@ -115,15 +115,15 @@
     },
     "logout_confirm_text": "Are you sure you want to log out ?",
     "@logout_confirm_text":{
-      "description": "Text to ask the user about logging out"
+      "description": "Asking the user to confirm his logout"
     },
     "confirm_delete": "Confirm delete",
     "@confirm_delete": {
-      "description": "Offers confirm option to the user ?"
+      "description": "Asking the user to confirm his deletion"
     },
     "delete_confirm_text": "Enter your password to delete your account",
     "@delete_confirm_text": {
-      "description": "Are you sure you want to delete your account ?"
+      "description": "Asking the user to enter his password to delete his account"
     },
     "delete": "Delete",
     "@delete":{
@@ -152,5 +152,33 @@
     "account_deleted": "Your account has been deleted",
     "@account_deleted":{
       "description": "The user has deleted his account"
+    },
+    "invalid_password": "Invalid password, please try again",
+    "@invalid_password":{
+      "description": "The user entered an invalid password, he should try again"
+    },
+    "weak_password": "Your password is too weak",
+    "@weak_password":{
+      "description": "The user entered a weak password"
+    },
+    "invalid_email": "Invalid email",
+    "@invalid_email":{
+      "description": "The user entered an invalid email"
+    },
+    "email_already_in_use": "This email is already in use",
+    "@email_already_in_use":{
+      "description": "The user entered an already used email"
+    },
+    "operation_not_allowed": "This operation is not allowed",
+    "@operation_not_allowed":{
+      "description": "The user entered an operation that is not allowed"
+    },
+    "channel_error": "Channel error",
+    "@channel_error":{
+      "description": "The user entered an error"
+    },
+    "news": "News",
+    "@news":{
+      "description": "The news page"
     }
   }
