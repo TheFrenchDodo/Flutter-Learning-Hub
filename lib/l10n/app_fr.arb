@@ -9,7 +9,7 @@
     "home": "A C C U E I L",
     "settings": "P A R A M È T R E S",
     "learning": "É D U C A T I O N",
-    "dark_mode": "Mode nuit",
+    "dark_mode": "MODE NUIT \nest géré automatiquement en fonction \ndu thème de votre appareil",
     "science": "Sciences",
     "movie": "film",
     "entertainment": "divertissement",
@@ -31,11 +31,12 @@
     "confirm": "Confirmer",
     "logout_confirm_text": "Souhaitez-vous vraiment vous déconnecter ?",
     "confirm_delete": "Confirmer votre suppression",
-    "delete_confirm_text": "Souhaitez-vous vraiment supprimer votre compte ?",
+    "delete_confirm_text": "Enter votre mot de passe pour supprimer votre compte",
     "delete": "Supprimer",
     "unknown_user": "Utilisateur inconnu",
     "your_name": "Votre nom complet",
     "edit_profile": "Modifier mon profil",
     "edit_name_text": "Entrez votre nom",
-    "profile_updated": "Le profil a été mis à jour"
+    "profile_updated": "Le profil a été mis à jour",
+    "account_deleted": "Compte supprimé"
 }

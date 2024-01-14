@@ -9,7 +9,7 @@
     "home": "T H U I S",
     "settings": "I N S T E L L I N G E N",
     "learning": "O N D E R W I J S",
-    "dark_mode": "Nacht modus",
+    "dark_mode": "NACHT MODUS \ngebaseerd op het thema van uw apparaat",
     "science": "Wetenschappen",
     "movie": "film",
     "entertainment": "Ontspanning",
@@ -31,11 +31,12 @@
     "confirm": "Bevestigen",
     "logout_confirm_text": "Weet u zeker dat u wilt uitloggen ?",
     "confirm_delete": "Verwijderen bevestigen",
-    "delete_confirm_text": "Weet u zeker dat u uw account wilt verwijderen ?",
+    "delete_confirm_text": "Voer uw wachtwoord in om uw account te verwijderen",
     "delete": "Verwijderen",
     "unknown_user": "Onbekende gebruiker",
     "your_name": "Uw volledige naam",
     "edit_profile": "Profiel bewerken",
     "edit_name_text": "Voer uw naam in",
-    "profile_updated": "Profiel bijgewerkt"
+    "profile_updated": "Profiel bijgewerkt",
+    "account_deleted": "Account verwijderd"
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/components/my_bottomwidget.dart';
+import 'package:dorian/components/my_bottomwidget.dart';
 
 
 class HomeScreen extends StatelessWidget {

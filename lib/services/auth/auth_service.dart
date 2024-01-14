@@ -36,6 +36,7 @@ class AuthService {
         {
           "uid": userCredential.user!.uid,
           "email": email,
+          // "name": null
         },
       );
 
@@ -52,17 +53,15 @@ class AuthService {
         email: email, 
         password: password,
       );
-
       // save user info
       _firestore.collection("Users").doc(userCredential.user!.uid).set(
         {
           "uid": userCredential.user!.uid,
           "email": email,
+          // "name": AppLocalizations.of(context)!.unknown_user
         },
       );
-
         return userCredential;
-
     } on FirebaseAuthMultiFactorException catch (e) {
       throw Exception(e.code);
       
@@ -70,55 +69,6 @@ class AuthService {
       throw 'Error during sign up: $e';
     }
   }
-
-  // // delete profile
-  // Future<void> deleteUser(context) async {
-
-  //   ///--- Delete User Account ---///
-  //   // // email textfield
-  //   // MyTextField(
-  //   //   hintText: "email@example.com",
-  //   //   obscureText: false, 
-  //   //   controller: _emailController,
-  //   // );
-
-  //   // const SizedBox(height: 16);
-    
-  //   // // password textfield
-  //   // MyTextField(
-  //   //   hintText: AppLocalizations.of(context)!.password,
-  //   //   obscureText: true,
-  //   //   controller: _passwordController,
-  //   // );
-
-  //   AuthCredential credential = EmailAuthProvider.credential(
-  //     email: getCurrentUser()!.email!,
-  //     password: _passwordController.text,
-  //   );
-
-  //   try {
-  //     await FirebaseAuth.instance.currentUser!.reauthenticateWithCredential(credential);
-  //     await FirebaseAuth.instance.currentUser!.delete();
-
-  //   ///--- Delete User Data ---///
-  //   String docID = FirebaseAuth.instance.currentUser!.uid;
-    
-  //   await _firestore
-  //     .collection("Users")
-  //     .doc(docID)
-  //     .delete();
-    
-  //   } catch (e) {
-  //     if (context.mounted){ // to resolve "Don't use 'BuildContext' across async gaps around showDialog" warning
-  //     showDialog(
-  //       context: context,
-  //       builder: (context) => AlertDialog(
-  //         title: Text(e.toString()),
-  //       ),
-  //     );
-  //     }
-  //   }
-  // }
 
   // sign out
   Future<void> signOut() async{

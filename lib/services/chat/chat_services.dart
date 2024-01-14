@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_test_application_1/models/message.dart';
+import 'package:dorian/models/message.dart';
 
 class ChatService{
   // get final instance of firestore and auth

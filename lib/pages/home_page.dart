@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/components/my_drawer.dart';
-import 'package:flutter_test_application_1/components/my_page_builder.dart';
-import 'package:flutter_test_application_1/pages/contact_page.dart';
+import 'package:dorian/components/my_drawer.dart';
+import 'package:dorian/components/my_page_builder.dart';
+import 'package:dorian/pages/contact_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
               ));
             },
             icon: Icon(
-              Icons.message_outlined
+              Icons.chat
               )
           )
         ],

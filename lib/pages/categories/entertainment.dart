@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_test_application_1/pages/learningscreen.dart';
+import 'package:dorian/pages/learningscreen.dart';
 
 
 class Entertainment extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/services/auth/auth_service.dart';
-import 'package:flutter_test_application_1/components/my_auth_button.dart';
-import 'package:flutter_test_application_1/components/my_textfield.dart';
+import 'package:dorian/services/auth/auth_service.dart';
+import 'package:dorian/components/my_auth_button.dart';
+import 'package:dorian/components/my_textfield.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends StatelessWidget{

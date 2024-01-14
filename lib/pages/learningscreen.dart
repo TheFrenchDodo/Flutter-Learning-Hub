@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/components/my_bottomwidget.dart';
+import 'package:dorian/components/my_bottomwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_test_application_1/components/my_drawer.dart';
-import 'package:flutter_test_application_1/pages/categories/entertainment.dart';
-import 'package:flutter_test_application_1/pages/categories/movies.dart';
-import 'package:flutter_test_application_1/pages/categories/sciences.dart';
+import 'package:dorian/components/my_drawer.dart';
+import 'package:dorian/pages/categories/entertainment.dart';
+import 'package:dorian/pages/categories/movies.dart';
+import 'package:dorian/pages/categories/sciences.dart';
 
 
 class LearningScreen extends StatefulWidget {
@@ -26,57 +26,88 @@ class LearningScreenState extends State<LearningScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Sciences(),
+            child: Column(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Sciences(),
+                      ),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.science,
+                    //color: Theme.of(context).colorScheme.tertiary,
+                    size: 50,
                   ),
-                );
-              },
-              icon: const Icon(
-                Icons.science, 
-                //color: Theme.of(context).colorScheme.tertiary,
-                size: 50,
-               ),
-              tooltip: AppLocalizations.of(context)!.science,
+                  tooltip: AppLocalizations.of(context)!.science,
+                ),
+                Text(
+                  AppLocalizations.of(context)!.science,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              ],
             ),
           ),
 
           // Navigate to Movies
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Movies(),
+          Column(
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Movies(),
+                    ),
+                  );
+                },
+                icon: const Icon(
+                  Icons.movie,
+                  //color: Theme.of(context).colorScheme.tertiary,
+                  size: 50,
                 ),
-              );
-            },
-            icon: const Icon(
-              Icons.movie,
-              //color: Theme.of(context).colorScheme.tertiary,
-              size: 50,
-            ),
-            tooltip: AppLocalizations.of(context)!.movie,
+                tooltip: AppLocalizations.of(context)!.movie,
+              ),
+              Text(
+                AppLocalizations.of(context)!.movie,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ],
           ),
 
           // Navigate to Entertainment
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Entertainment(),
+          Column(
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Entertainment(),
+                    ),
+                  );
+                },
+                icon: const Icon(
+                  Icons.music_video,
+                  //color: Theme.of(context).colorScheme.tertiary,
+                  size: 50,
                 ),
-              );
-            },
-            icon: const Icon(
-              Icons.music_video,
-              //color: Theme.of(context).colorScheme.tertiary,
-              size: 50,),
-            tooltip: AppLocalizations.of(context)!.entertainment,
+                tooltip: AppLocalizations.of(context)!.entertainment,
+              ),
+              Text(
+                AppLocalizations.of(context)!.entertainment,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -86,6 +117,7 @@ class LearningScreenState extends State<LearningScreen> {
     );
   }
 }
+
 
 
         //   SizedBox(height: 16),

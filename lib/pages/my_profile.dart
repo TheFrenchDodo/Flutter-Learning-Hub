@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/auth/auth_gate.dart';
-import 'package:flutter_test_application_1/components/my_bottomwidget.dart';
-import 'package:flutter_test_application_1/components/my_drawer.dart';
+import 'package:dorian/auth/auth_gate.dart';
+import 'package:dorian/components/my_bottomwidget.dart';
+import 'package:dorian/components/my_drawer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_test_application_1/components/my_textfield.dart';
+import 'package:dorian/components/my_textfield.dart';
 
 
 class MyProfile extends StatelessWidget {
@@ -103,7 +103,7 @@ class MyProfile extends StatelessWidget {
               ),
             ],
           ),
-                    actions: <Widget>[    
+            actions: <Widget>[    
             // Cancel button
             TextButton(
               onPressed: () {
@@ -115,13 +115,21 @@ class MyProfile extends StatelessWidget {
             TextButton(
             // Confirm Update button
               onPressed: () {
-                editUser(context, displayNameController.text);
-                Navigator.of(context).pop(true);
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
                     title: Text(AppLocalizations.of(context)!.profile_updated),
                   ),
+                );
+                editUser(context, displayNameController.text);
+                Future.delayed(
+                  const Duration(seconds: 1), (){                
+                    Navigator.of(context).pop(true);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AuthGate())
+                    );
+                  },
                 );
               },
               child: Text(AppLocalizations.of(context)!.confirm),
@@ -133,7 +141,6 @@ class MyProfile extends StatelessWidget {
   }
 
   Future<void> editUser(context, displayNameController) async {
-    
     try {
       ///--- Edit User Account ---///
       User? user = auth.currentUser;
@@ -141,27 +148,18 @@ class MyProfile extends StatelessWidget {
       // Update the user's displayName
       if (displayNameController != null) {
         await user?.updateDisplayName(displayNameController);
-        print("OUI");
- 
-      } else {
-        print("NON");
       }
 
-      print(user?.displayName);
-      
-
-    
     } catch (e) {
-      if (context.mounted){ // to resolve "Don't use 'BuildContext' across async gaps around showDialog" warning
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(e.toString()),
-        ),
-      );
+      if (context.mounted){
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          ),
+        );
       }
     }
-
   }
 
   ///--- Delete account ---///
@@ -199,12 +197,21 @@ class MyProfile extends StatelessWidget {
             TextButton(
             // Confirm Delete button
               onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text(AppLocalizations.of(context)!.account_deleted),
+                  ),
+                );
                 deleteUser(context, passwordController, getCurrentUsermail(), getCurrentUserUID());
-                
-                Navigator.of(context).pop(true);
-                Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const AuthGate())
+                Future.delayed(
+                  const Duration(seconds: 1), (){                
+                    Navigator.of(context).pop(true);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AuthGate())
+                    );
+                  },
                 );
               },
               child: Text(AppLocalizations.of(context)!.confirm),
@@ -235,7 +242,7 @@ class MyProfile extends StatelessWidget {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("account Deleted"),
+          title: Text(AppLocalizations.of(context)!.account_deleted),
         ),
       ); 
     
@@ -293,9 +300,12 @@ class MyProfile extends StatelessWidget {
                   right: 0,
                   child: IconButton(
                     icon: Icon(Icons.edit),
+                    tooltip: AppLocalizations.of(context)!.edit_profile,
+                    color: Theme.of(context).colorScheme.tertiary,
                     onPressed: () => edit(context),
                   ),
-                )]
+                )
+                ],
               ),
               ),
 

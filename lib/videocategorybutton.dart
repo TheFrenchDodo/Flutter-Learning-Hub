@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/pages/learningscreen.dart';
+import 'package:dorian/pages/learningscreen.dart';
 
 class VideoCategoryButton extends StatelessWidget {
   final IconData icon;

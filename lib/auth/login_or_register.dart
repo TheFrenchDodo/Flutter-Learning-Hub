@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/pages/login_page.dart';
-import 'package:flutter_test_application_1/pages/register_page.dart';
+import 'package:dorian/pages/login_page.dart';
+import 'package:dorian/pages/register_page.dart';
 
 
  class LoginOrRegister extends StatefulWidget{

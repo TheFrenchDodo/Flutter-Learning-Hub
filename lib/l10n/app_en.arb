@@ -33,7 +33,7 @@
     "@learning": {
       "description": "Let's learn  stuff"
     },
-    "dark_mode": "Dark mode",
+    "dark_mode": "DARK MODE \nis set automatically based on your device theme",
     "@dark_mode": {
       "description": "Going to the dark side"
     },
@@ -121,7 +121,7 @@
     "@confirm_delete": {
       "description": "Offers confirm option to the user ?"
     },
-    "delete_confirm_text": "Are you sure you want to delete your account ?",
+    "delete_confirm_text": "Enter your password to delete your account",
     "@delete_confirm_text": {
       "description": "Are you sure you want to delete your account ?"
     },
@@ -148,5 +148,9 @@
     "profile_updated": "The profile has been updated",
     "@profile_updated":{
       "description": "The profile has been updated"
+    },
+    "account_deleted": "Your account has been deleted",
+    "@account_deleted":{
+      "description": "The user has deleted his account"
     }
   }

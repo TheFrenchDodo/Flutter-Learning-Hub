@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/pages/home_page.dart';
-import 'package:flutter_test_application_1/pages/my_profile.dart';
-import 'package:flutter_test_application_1/pages/learningscreen.dart';
-import 'package:flutter_test_application_1/pages/settingsscreen.dart';
+import 'package:dorian/pages/home_page.dart';
+import 'package:dorian/pages/my_profile.dart';
+import 'package:dorian/pages/learningscreen.dart';
+import 'package:dorian/pages/settingsscreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyDrawer extends StatelessWidget {

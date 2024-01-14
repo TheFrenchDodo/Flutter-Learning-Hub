@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test_application_1/auth/login_or_register.dart';
-import 'package:flutter_test_application_1/pages/home_page.dart';
+import 'package:dorian/auth/login_or_register.dart';
+import 'package:dorian/pages/home_page.dart';
 
 
 class AuthGate extends StatelessWidget{

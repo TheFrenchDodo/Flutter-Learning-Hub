@@ -2,11 +2,11 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_test_application_1/components/my_circular_indicator.dart';
-import 'package:flutter_test_application_1/components/user_tile.dart';
-import 'package:flutter_test_application_1/pages/chat_page.dart';
-import 'package:flutter_test_application_1/services/auth/auth_service.dart';
-import 'package:flutter_test_application_1/services/chat/chat_services.dart';
+import 'package:dorian/components/my_circular_indicator.dart';
+import 'package:dorian/components/user_tile.dart';
+import 'package:dorian/pages/chat_page.dart';
+import 'package:dorian/services/auth/auth_service.dart';
+import 'package:dorian/services/chat/chat_services.dart';
 
 
 class ContactPage extends StatelessWidget {
@@ -60,14 +60,15 @@ class ContactPage extends StatelessWidget {
       // print(userData);
       // userData.addAll({"name": name});
       // print(userData);
+      String nameToShow = userData["email"].split("@")[0];
       return UserTile(
-        text: userData["email"],
-        // text: name,
+        text: nameToShow,
         onTap:(){
           Navigator.push(
             context,
             PageRouteBuilder(
               pageBuilder: (context, animation, secondaryAnimation) => ChatPage(
+                
                 receiverEmail: userData["email"],
                 receiverID: userData["uid"],
               ),
