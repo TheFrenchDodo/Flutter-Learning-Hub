@@ -17,12 +17,18 @@ class MyAuthButton extends StatelessWidget{
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.tertiary,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(30),
         ),
-        padding: const EdgeInsets.all(25),
-        margin: const EdgeInsets.symmetric(horizontal: 25),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.symmetric(horizontal: 100),
         child: Center(
-          child: Text(text),
+          child: Text(
+            text, 
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold
+              ),
+            ),
         ),
       ),
     );

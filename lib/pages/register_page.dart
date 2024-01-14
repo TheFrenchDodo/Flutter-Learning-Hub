@@ -20,7 +20,8 @@ class RegisterPage extends StatelessWidget{
 
       try{
         auth.signUpWithEmailPassword(
-          _emailController.text, _passwordController.text,
+          _emailController.text,
+          _passwordController.text,
         );
 
         // login page redirection after registration  
@@ -65,20 +66,21 @@ class RegisterPage extends StatelessWidget{
         backgroundColor: Theme.of(context).colorScheme.tertiary
       ),
 
-      body: SingleChildScrollView(
+       body: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
               const SizedBox(height: 30),
+              
+              // logo & Let's create an account text
               Icon(
                 Icons.tag_faces_outlined,
                 size: 80,
                 color: Theme.of(context).colorScheme.primary,
               ),
-
               const SizedBox(height: 30),
-
               Text(
                 "Let's create an account", 
                 style: TextStyle(color: Theme.of(context).colorScheme.primary,
@@ -87,7 +89,8 @@ class RegisterPage extends StatelessWidget{
               ),
 
               const SizedBox(height: 25),
-
+              
+              // email textfield
               MyTextField(
                 hintText: "email@example.com",
                 obscureText: false, 
@@ -119,36 +122,66 @@ class RegisterPage extends StatelessWidget{
                   text: AppLocalizations.of(context)!.register,
                   onTap: () => register(context),
                 ),
+                
+                const SizedBox(height: 200),  // TODO: search for a better way to solve "Bottom overflowed by ... pixels" 
 
-                // Register now
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                        AppLocalizations.of(context)!.already_member,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 17
-                        ),
-                    ),
-                    SizedBox(width: 0, height: 40),
-                    GestureDetector(
-                      onTap: onTap,
-                      child: Text(
-                        AppLocalizations.of(context)!.login_now,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                          color: Theme.of(context).colorScheme.primary
-                        ),
+              // login section
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: GestureDetector( 
+                  onTap: onTap,
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 15),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.tertiary,
                       ),
+                      borderRadius: BorderRadius.circular(25),
                     ),
-                ],
-              )
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.already_member,
+                          style: TextStyle(
+                            fontSize: 17,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+
+                        // Login now button
+                        GestureDetector(
+                          onTap: onTap,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.tertiary,
+                              border: Border.all(
+                                color: Theme.of(context).colorScheme.tertiary,
+                              ),
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            padding: const EdgeInsets.all(10),
+                            child: Text(
+                              AppLocalizations.of(context)!.login_now,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                ),  
+              ),
             ],
           )
         ),
       )
-    );
+      );
+    
   }
 }
