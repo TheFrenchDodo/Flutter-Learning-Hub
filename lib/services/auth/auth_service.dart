@@ -6,31 +6,22 @@ class AuthService {
   //instance of auth
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  //final TextEditingController _passwordController = TextEditingController();
 
   // get the current user
   User? getCurrentUser(){
     return _auth.currentUser;
   }
+  // get the name of the user
+  String? getCurrentUserName(){
+    return _auth.currentUser?.displayName;
+  }
 
-  // get profile
-  Future<void> getUserInfo() async {
-    final user = getCurrentUser();
-    if (user != null) {
-
-    final name = user.displayName;
-    final email = user.email;
-    final photoUrl = user.photoURL;
-    bool emailVerified = user.emailVerified;
-    String uid = user.uid;
-
-    print(
-      "name $name, email $email, photoURL $photoUrl, emailVerified $emailVerified, uid $uid"
-    );
-    }
+  // get the name of the user
+  String? getCurrentUID(){
+    return _auth.currentUser?.uid;
   }
   
-  //sign in
+  // sign in
   Future<UserCredential> signInWithEmailPassword(String email, password) async{
     try{
 

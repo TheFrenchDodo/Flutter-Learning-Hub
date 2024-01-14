@@ -57,7 +57,7 @@ class MyProfile extends StatelessWidget {
     return auth.currentUser;
    }
   // get the current mail address
-  getCurrentUsermail(){
+  String? getCurrentUsermail(){
     return auth.currentUser?.email;
   }
   // get the current UID
@@ -84,6 +84,86 @@ class MyProfile extends StatelessWidget {
     return null;
   }
 
+  void edit(context) async{
+    final TextEditingController displayNameController = TextEditingController();
+
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Edit profile"),
+          content: Column(
+            children: [
+              Text("Edit profile"),
+              SizedBox(height: 10),
+              MyTextField(
+                hintText: "Edit profile",
+                controller: displayNameController,
+                obscureText: false,
+              ),
+            ],
+          ),
+                    actions: <Widget>[    
+            // Cancel button
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false); 
+              },
+              child: Text(AppLocalizations.of(context)!.cancel),
+            ),
+
+            TextButton(
+            // Confirm Delete button
+              onPressed: () {
+                editUser(context, displayNameController.text);
+                Navigator.of(context).pop(true);
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text("Account updated"),
+                  ),
+                );
+              },
+              child: Text(AppLocalizations.of(context)!.confirm),
+            ),
+          ]
+        );
+      }
+    );
+  }
+
+  Future<void> editUser(context, displayNameController) async {
+    
+    try {
+      ///--- Edit User Account ---///
+      User? user = auth.currentUser;
+
+      // Update the user's displayName
+      if (displayNameController != null) {
+        await user?.updateDisplayName(displayNameController);
+        print("OUI");
+ 
+      } else {
+        print("NON");
+      }
+
+      print(user?.displayName);
+      
+
+    
+    } catch (e) {
+      if (context.mounted){ // to resolve "Don't use 'BuildContext' across async gaps around showDialog" warning
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+      }
+    }
+
+  }
+
   ///--- Delete account ---///
   void delete(BuildContext context) async {
 
@@ -98,6 +178,7 @@ class MyProfile extends StatelessWidget {
           content: Column(
             children: [
               Text(AppLocalizations.of(context)!.delete_confirm_text),
+              SizedBox(height: 10),
               MyTextField(
                 hintText: AppLocalizations.of(context)!.password,
                 obscureText: true,
@@ -146,7 +227,6 @@ class MyProfile extends StatelessWidget {
       await FirebaseAuth.instance.currentUser!.delete();
 
       ///--- Delete User Data ---///
-    
       await _firestore
       .collection("Users")
       .doc(uid)
@@ -192,14 +272,15 @@ class MyProfile extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Column(
+                child: Stack(
                   children: [
+                    Column(
+                      children:[
                     Icon(
                       Icons.account_circle,
                       size: 50,
                     ),
                     Text(
-                      //user?.email ?? AppLocalizations.of(context)!.unknown_user,
                       getUserInfo(context) ?? AppLocalizations.of(context)!.unknown_user,
                       style: TextStyle(
                         fontSize: 16,
@@ -207,6 +288,15 @@ class MyProfile extends StatelessWidget {
                     ),
                   ],
                 ),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: IconButton(
+                    icon: Icon(Icons.edit),
+                    onPressed: () => edit(context),
+                  ),
+                )]
+              ),
               ),
 
               SizedBox(height: 20,),

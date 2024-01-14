@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_test_application_1/components/my_circular_indicator.dart';
@@ -10,7 +12,6 @@ import 'package:flutter_test_application_1/services/chat/chat_services.dart';
 class ContactPage extends StatelessWidget {
   ContactPage({super.key});
 
-  //chat & auth service
   final ChatService _chatService = ChatService();
   final AuthService _authService = AuthService();
 
@@ -18,7 +19,6 @@ class ContactPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //title: Text("home_page"),
         title: Text(AppLocalizations.of(context)!.contact_page),
         backgroundColor: Theme.of(context).colorScheme.tertiary,
       ),
@@ -32,7 +32,6 @@ class ContactPage extends StatelessWidget {
     return StreamBuilder(
       stream: _chatService.getUsersStream(),
       builder: (context, snapshot){
-        // return MyCircularIndicator();    // for test purpose
 
         if (snapshot.connectionState == ConnectionState.waiting){
           //return const Text("Loading...");
@@ -45,7 +44,10 @@ class ContactPage extends StatelessWidget {
         
         //return the list view
         return ListView(
-          children: snapshot.data!.map<Widget>((userData) => _buildUserListItem(userData, context)).toList(),
+          children: snapshot.data!.map<Widget>(
+            (userData) => _buildUserListItem(
+              userData, // userData only get the email and uid
+              context)).toList(),
         );
       }
     );
@@ -53,9 +55,14 @@ class ContactPage extends StatelessWidget {
 
   // build list tile for user     // the 'Map' contains that user data
   Widget _buildUserListItem(Map<String, dynamic> userData,BuildContext context){
-    if (userData["email"] != _authService.getCurrentUser()!.email){
+    if (userData["uid"] != _authService.getCurrentUser()?.uid){
+      // String name = userData["name"] ?? "test";
+      // print(userData);
+      // userData.addAll({"name": name});
+      // print(userData);
       return UserTile(
         text: userData["email"],
+        // text: name,
         onTap:(){
           Navigator.push(
             context,
