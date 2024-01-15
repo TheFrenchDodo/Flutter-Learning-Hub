@@ -1,4 +1,4 @@
-# Project Dorian
+# Learning Hub
 
 A mobile application for learning purposes with a built-in chat function to connect with everyone using the app.
 
