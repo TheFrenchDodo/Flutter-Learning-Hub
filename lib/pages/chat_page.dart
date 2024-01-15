@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dorian/components/chat_bubble.dart';
+import 'package:flutter_learning_hub/components/chat_bubble.dart';
 import 'package:flutter/material.dart';
-import 'package:dorian/components/my_circular_indicator.dart';
-import 'package:dorian/components/my_textfield.dart';
-import 'package:dorian/services/auth/auth_service.dart';
-import 'package:dorian/services/chat/chat_services.dart';
+import 'package:flutter_learning_hub/components/my_circular_indicator.dart';
+import 'package:flutter_learning_hub/components/my_textfield.dart';
+import 'package:flutter_learning_hub/services/auth/auth_service.dart';
+import 'package:flutter_learning_hub/services/chat/chat_services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChatPage extends StatelessWidget{

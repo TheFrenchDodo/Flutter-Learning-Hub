@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:dorian/auth/auth_gate.dart';
-import 'package:dorian/firebase_options.dart';
-import 'package:dorian/themes/dark_mode.dart';
-import 'package:dorian/themes/light_mode.dart';
-import 'package:dorian/themes/theme_provider.dart';
+import 'package:flutter_learning_hub/auth/auth_gate.dart';
+import 'package:flutter_learning_hub/firebase_options.dart';
+import 'package:flutter_learning_hub/themes/dark_mode.dart';
+import 'package:flutter_learning_hub/themes/light_mode.dart';
+import 'package:flutter_learning_hub/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/services.dart';
