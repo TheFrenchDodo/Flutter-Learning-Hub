@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:dorian/services/auth/auth_service.dart';
-import 'package:dorian/components/my_auth_button.dart';
-import 'package:dorian/components/my_textfield.dart';
+import 'package:flutter_learning_hub/services/auth/auth_service.dart';
+import 'package:flutter_learning_hub/components/my_auth_button.dart';
+import 'package:flutter_learning_hub/components/my_textfield.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends StatelessWidget{

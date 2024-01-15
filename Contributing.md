@@ -35,9 +35,9 @@ Follow the Dart and Flutter code style conventions. Make sure your code is well-
 
 When you are ready to submit your changes:
 
-    Ensure your changes work and do not introduce any breaking issues.
-    Squash your commits into a single commit for clarity and a clean history.
-    Provide a clear and concise description of your changes in the pull request.
+Ensure your changes work and do not introduce any breaking issues.
+Squash your commits into a single commit for clarity and a clean history.
+Provide a clear and concise description of your changes in the pull request.
 
 ### Reporting Issues
 

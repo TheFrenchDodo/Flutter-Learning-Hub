@@ -67,7 +67,7 @@ Describe how to use the app, key features, and any specific instructions for use
 ### Contributing
 
 If you'd like to contribute to this project, please follow the
- [Contributing Guidelines](https://github.com/TheFrenchDodo/flutter_application/blob/main/Contributing.md).
+[Contributing Guidelines](https://github.com/TheFrenchDodo/flutter_application/blob/main/Contributing.md).
 
 ### Acknowledgments
 

@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:dorian/auth/auth_gate.dart';
-import 'package:dorian/components/my_bottomwidget.dart';
-import 'package:dorian/components/my_drawer.dart';
+import 'package:flutter_learning_hub/auth/auth_gate.dart';
+import 'package:flutter_learning_hub/components/my_bottomwidget.dart';
+import 'package:flutter_learning_hub/components/my_drawer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:dorian/components/my_textfield.dart';
+import 'package:flutter_learning_hub/components/my_textfield.dart';
 
 
 class MyProfile extends StatelessWidget {

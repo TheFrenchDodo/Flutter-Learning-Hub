@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:dorian/components/my_bottomwidget.dart';
-import 'package:dorian/components/my_drawer.dart';
-import 'package:dorian/themes/theme_provider.dart';
+import 'package:flutter_learning_hub/components/my_bottomwidget.dart';
+import 'package:flutter_learning_hub/components/my_drawer.dart';
+import 'package:flutter_learning_hub/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

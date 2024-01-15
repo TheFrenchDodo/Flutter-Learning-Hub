@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:dorian/components/my_drawer.dart';
-import 'package:dorian/components/my_page_builder.dart';
-import 'package:dorian/pages/contact_page.dart';
+import 'package:flutter_learning_hub/components/my_drawer.dart';
+import 'package:flutter_learning_hub/components/my_page_builder.dart';
+import 'package:flutter_learning_hub/pages/contact_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
