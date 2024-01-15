@@ -1,16 +1,73 @@
-# flutter_test_application_1
+# Project Dorian
 
-A new Flutter project.
+A mobile application for learning purposes with a built-in chat function to connect with everyone using the app.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+These instructions will guide you on how to download, install, and run the app on your Android device.
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter SDK: [Installation Guide](https://flutter.dev/docs/get-started/install)
+- Android Studio or VS Code with Flutter extension
+- Android device or emulator
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/TheFrenchDodo/flutter_application.git ```
+
+   Navigate to the project directory:
+
+bash
+
+cd your-project
+
+Install dependencies:
+
+bash
+
+    flutter pub get
+
+Build and Run
+For Debug Mode:
+
+bash
+
+flutter run
+
+For Release Mode:
+
+bash
+
+flutter build apk --release
+
+Install on Android Device
+
+    Ensure USB Debugging is enabled on your Android device.
+
+    Connect your Android device to your computer.
+
+    Run the following command to install the APK:
+
+    bash
+
+    flutter install
+
+Alternatively, you can locate the APK file in the build/app/outputs/flutter-apk directory and install it manually on your Android device.
+Usage
+
+Describe how to use the app, key features, and any specific instructions for users.
+Contributing
+
+If you'd like to contribute to this project, please follow the Contributing Guidelines.
+License
+
+This project is licensed under the [License Name] - see the LICENSE.md file for details.
+Acknowledgments
+
+    Mention any libraries, tools, or resources used in your project.
+
+
