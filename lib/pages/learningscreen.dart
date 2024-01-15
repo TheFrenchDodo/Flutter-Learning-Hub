@@ -1,13 +1,8 @@
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:dorian/components/file_uploader_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:dorian/components/my_bottomwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:dorian/components/my_drawer.dart';
-import 'package:dorian/pages/categories/entertainment.dart';
-import 'package:dorian/pages/categories/news.dart';
-import 'package:dorian/pages/categories/sciences.dart';
 
 
 class LearningScreen extends StatefulWidget {
@@ -16,45 +11,6 @@ class LearningScreen extends StatefulWidget {
 }
 
 class LearningScreenState extends State<LearningScreen> {
-
-  File? selectedFile;
-  Future<void> pickFile() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-    if (result != null) {
-      setState(() {
-        selectedFile = File.fromRawPath(result.files.single.bytes!);
-      });
-
-      // Upload the selected file to Firestore
-      // await uploadFileToFirestore(selectedFile!);
-    }
-  }
-
-  // Future<void> uploadFileToFirestore(File file) async {
-  //   try {
-  //     // Convert file to bytes
-  //     List<int> fileBytes = await file.readAsBytes();
-
-  //     // Get a reference to the Firestore storage bucket
-  //     Reference storageReference = FirebaseStorage.instance.ref().child('uploads/${file.path.split('/').last}');
-
-  //     // Upload file to Firestore
-  //     await storageReference.putData(Uint8List.fromList(fileBytes));
-
-  //     // Get the download URL
-  //     String downloadURL = await storageReference.getDownloadURL();
-
-  //     // Store the download URL in Firestore or perform any other necessary actions
-  //     await FirebaseFirestore.instance.collection('uploaded_files').add({
-  //       'file_name': file.path.split('/').last,
-  //       'download_url': downloadURL,
-  //     });
-  //   } catch (e) {
-  //     print('Error uploading file to Firestore: $e');
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,85 +26,156 @@ class LearningScreenState extends State<LearningScreen> {
           Center(
             child: Column(
               children: [
+                // Upload to Sciences
+Container(
+  decoration: BoxDecoration(
+    border: Border.all(
+      color: Colors.black,  // Set the color of the border
+      width: 2.0,           // Set the width of the border
+    ),
+    borderRadius: BorderRadius.circular(10.0),  // Set the border radius
+  ),
+  child: Column(
+    children: [
+      IconButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text(AppLocalizations.of(context)!.upload_science_file),
+                content: FileUploaderWidget(),  // TODO: add API parameters here
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(AppLocalizations.of(context)!.close),
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        icon: const Icon(
+          Icons.file_upload_outlined,
+          size: 50,
+        ),
+        tooltip: AppLocalizations.of(context)!.upload_file,
+      ),
+      Text(
+        AppLocalizations.of(context)!.science,
+        style: TextStyle(
+          fontSize: 20,
+        ),
+      ),
+      SizedBox(height: 25),
+    ],
+  ),
+)
+
+              ],
+            ),
+          ),
+
+          SizedBox(height: 25),
+
+          // Upload to News
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,  // Set the color of the border
+                width: 2.0,           // Set the width of the border
+              ),
+              borderRadius: BorderRadius.circular(10.0),  // Set the border radius
+            ),
+            child: Column(
+              children: [
                 IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Sciences(),
-                      ),
-                    );
-                  },
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(AppLocalizations.of(context)!.upload_news_file),
+                        content: FileUploaderWidget(),  // TODO: add API parameters here
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text(AppLocalizations.of(context)!.close),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
                   icon: const Icon(
-                    Icons.science,
+                    Icons.file_upload_outlined,
                     size: 50,
                   ),
-                  tooltip: AppLocalizations.of(context)!.science,
+                  tooltip: AppLocalizations.of(context)!.upload_file,
                 ),
                 Text(
-                  AppLocalizations.of(context)!.science,
+                  AppLocalizations.of(context)!.news,
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary,
+                    fontSize: 20,
                   ),
                 ),
               ],
             ),
           ),
 
-          // Navigate to Movies
-          Column(
-            children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => News(),
-                    ),
-                  );
-                },
-                icon: const Icon(
-                  Icons.newspaper,
-                  size: 50,
-                ),
-                tooltip: AppLocalizations.of(context)!.news,
-              ),
-              Text(
-                AppLocalizations.of(context)!.news,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
-            ],
-          ),
+          SizedBox(height: 25),
 
-          // Navigate to Entertainment
-          Column(
-            children: [
+          // Upload to Entertainment
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,  // Set the color of the border
+                width: 2.0,           // Set the width of the border
+              ),
+              borderRadius: BorderRadius.circular(10.0),  // Set the border radius
+            ),
+            child: Column(
+              children: [
               IconButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Entertainment(),
-                    ),
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(AppLocalizations.of(context)!.upload_entertainment_file),
+                        content: FileUploaderWidget(),  // TODO: add API parameters here
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text(AppLocalizations.of(context)!.close),
+                          ),
+                        ],
+                      );
+                    },
                   );
                 },
                 icon: const Icon(
-                  Icons.music_video,
+                  Icons.file_upload_outlined,
                   size: 50,
                 ),
-                tooltip: AppLocalizations.of(context)!.entertainment,
+                tooltip: AppLocalizations.of(context)!.upload_file,
               ),
               Text(
                 AppLocalizations.of(context)!.entertainment,
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 20,
                 ),
               ),
             ],
           ),
-        ],
+        ),
+        ]
       ),
       bottomNavigationBar: BottomWidget(),
       drawer: const MyDrawer(),

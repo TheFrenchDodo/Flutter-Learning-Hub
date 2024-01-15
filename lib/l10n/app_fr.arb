@@ -11,7 +11,7 @@
     "learning": "É D U C A T I O N",
     "dark_mode": "MODE NUIT \nest géré automatiquement en fonction \ndu thème de votre appareil",
     "science": "Sciences",
-    "news": "Les nouvelles",
+    "news": "Actualités",
     "movie": "film",
     "entertainment": "divertissement",
     "passwords_dont_match": "Les mots de passe ne correspondent pas",
@@ -45,5 +45,10 @@
     "invalid_email": "Adresse email invalide",
     "email_already_in_use": "Cette adresse email est déjà utilisée",
     "operation_not_allowed": "Cette opération n'est pas autorisée",
-    "channel_error": "Erreur de canal"
+    "channel_error": "Erreur de canal",
+    "upload_file": "Charger un fichier",
+    "upload_entertainment_file": "Chargez un fichier dans la category divertissement",
+    "upload_news_file": "Chargez un fichier dans la category actualités",
+    "upload_science_file": "Chargez un fichier dans la category sciences",
+    "close": "Fermer"
 }

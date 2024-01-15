@@ -20,7 +20,7 @@ class ChatPage extends StatelessWidget{
   final TextEditingController _messageController = TextEditingController();
   final ChatService _chatService = ChatService();
   final AuthService _authService = AuthService();
-
+  
   // send message
   void sendMessage()async{
     if (_messageController.text.isNotEmpty){

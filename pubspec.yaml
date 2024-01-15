@@ -27,6 +27,7 @@ dependencies:
   youtube_explode_dart: ^2.0.4
   cloud_firestore: ^4.14.0
   package_info: ^2.0.2
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:

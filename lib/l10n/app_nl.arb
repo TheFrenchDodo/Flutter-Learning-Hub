@@ -45,5 +45,10 @@
     "invalid_email": "Ongeldig e-mailadres",
     "email_already_in_use": "Dit e-mailadres is al in gebruik",
     "operation_not_allowed": "Deze actie is niet toegestaan",
-    "channel_error": "Kanaal fout"
+    "channel_error": "Kanaal fout",
+    "upload_file": "Upload een bestand",
+    "upload_entertainment_file": "Upload een bestand in de categorie onstanning",
+    "upload_news_file": "Upload een bestand in de categorie nieuws",
+    "upload_science_file": "Upload een bestand in de categorie wetenschap",
+    "close": "Sluiten"
 }

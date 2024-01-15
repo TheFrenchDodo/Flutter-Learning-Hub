@@ -180,5 +180,25 @@
     "news": "News",
     "@news":{
       "description": "The news page"
+    },
+    "upload_file": "Upload a file",
+    "@upload_file":{
+      "description": "Asking the user to upload a file in the news category"
+    },
+    "upload_entertainment_file": "Upload file in entertainment category",
+    "@upload_entertainment_file":{
+      "description": "Asking the user to upload a file in the entertainment category"
+    },
+    "upload_news_file": "Upload file in news category",
+    "@upload_news_file":{
+      "description": "Asking the user to upload a file in the news category"
+    },
+    "upload_science_file": "Upload file in science category",
+    "@upload_science_file":{
+      "description": "Asking the user to upload a file in the science category"
+    },
+    "close": "Close",
+    "@close":{
+      "description": "Asking the user to close the page"
     }
   }
