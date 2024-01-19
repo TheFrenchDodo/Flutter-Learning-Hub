@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_hub/components/my_drawer.dart';
 import 'package:flutter_learning_hub/components/my_page_builder.dart';
@@ -7,12 +8,15 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
+    String? getCurrentUser(){
+    return FirebaseAuth.instance.currentUser?.displayName ?? "!";
+   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.helloWorld),
+        title: Text(AppLocalizations.of(context)!.home),
         backgroundColor: Theme.of(context).colorScheme.tertiary,
         actions: [
           IconButton(
@@ -50,7 +54,7 @@ class HomePage extends StatelessWidget {
             ),
             ),
             Text(
-              AppLocalizations.of(context)!.welcome_back,
+              "${AppLocalizations.of(context)!.welcome_back} ${getCurrentUser()} ",
               style: TextStyle(
                 fontSize: 16,
                 //fontWeight: FontWeight.bold,

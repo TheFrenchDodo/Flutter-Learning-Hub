@@ -30,7 +30,7 @@
     "confirm_logout": "Uitloggen bevestigen",
     "cancel": "Annuleren",
     "confirm": "Bevestigen",
-    "logout_confirm_text": "Weet u zeker dat u wilt uitloggen ?",
+    "logout_confirm_text": "Weet u zeker dat u wilt uitloggen",
     "confirm_delete": "Verwijderen bevestigen",
     "delete_confirm_text": "Voer uw wachtwoord in om uw account te verwijderen",
     "delete": "Verwijderen",
@@ -50,5 +50,10 @@
     "upload_entertainment_file": "Upload een bestand in de categorie onstanning",
     "upload_news_file": "Upload een bestand in de categorie nieuws",
     "upload_science_file": "Upload een bestand in de categorie wetenschap",
-    "close": "Sluiten"
+    "close": "Sluiten",
+    "select_file": "Selecteer een bestand",
+    "selected_file": "Geselecteerde bestand",
+    "loading": "Laden...",
+    "return_button": "Terug",
+    "view_files": "Bestanden bekijken"
 }

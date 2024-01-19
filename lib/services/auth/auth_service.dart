@@ -41,6 +41,7 @@ class AuthService {
         },
       );
       return userCredential;
+      
     }
      catch (e) {
       if (e is FirebaseAuthException) {
@@ -48,7 +49,7 @@ class AuthService {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: Text(AppLocalizations.of(context)!.invalid_email),
+              title: Center(child:Text(AppLocalizations.of(context)!.invalid_email),)
             ),
           );
         }
@@ -56,7 +57,7 @@ class AuthService {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: Text(AppLocalizations.of(context)!.invalid_password),
+              title: Center(child:Text(AppLocalizations.of(context)!.invalid_password),)
             ),
           );
         }
@@ -64,7 +65,15 @@ class AuthService {
           showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text(AppLocalizations.of(context)!.channel_error),
+            title: Center(child:Text(AppLocalizations.of(context)!.channel_error),)
+            )
+          );
+        }
+        else{
+          showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Center(child: Text(AppLocalizations.of(context)!.error),)
             )
           );
         }
@@ -99,7 +108,7 @@ class AuthService {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: Text(AppLocalizations.of(context)!.email_already_in_use),
+              title: Center(child:Text(AppLocalizations.of(context)!.email_already_in_use),)
             ),
           );
           // throw Exception(e);
@@ -108,7 +117,7 @@ class AuthService {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: Text(AppLocalizations.of(context)!.weak_password),
+              title: Center(child:Text(AppLocalizations.of(context)!.weak_password),)
             ),
           );
         }
@@ -116,7 +125,7 @@ class AuthService {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: Text(AppLocalizations.of(context)!.invalid_email),
+              title: Center(child:Text(AppLocalizations.of(context)!.invalid_email),)
             ),
           );
         }
@@ -124,7 +133,7 @@ class AuthService {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: Text(AppLocalizations.of(context)!.operation_not_allowed),
+              title: Center(child:Text(AppLocalizations.of(context)!.operation_not_allowed),)
             ),
           );
         }
@@ -132,7 +141,7 @@ class AuthService {
           showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text(AppLocalizations.of(context)!.channel_error),
+            title: Center(child:Text(AppLocalizations.of(context)!.channel_error),)
             )
           );
         }

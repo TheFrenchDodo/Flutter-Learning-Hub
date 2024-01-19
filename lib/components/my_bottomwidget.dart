@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BottomWidget extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class BottomWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-        /*--- Go Back button ---*/
+          /*--- return button ---*/
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
@@ -20,7 +21,13 @@ class BottomWidget extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.arrow_back_ios_new_outlined),
+                Tooltip(
+                  message: AppLocalizations.of(context)!.return_button,
+                  child: Icon(
+                    Icons.arrow_back_ios_new_outlined,
+                    semanticLabel: AppLocalizations.of(context)!.return_button
+                  ),
+                ),
                 const SizedBox(width: 8),
               ]
             ),

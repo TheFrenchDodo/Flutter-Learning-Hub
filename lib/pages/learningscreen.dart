@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_learning_hub/components/my_bottomwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_learning_hub/components/my_drawer.dart';
+import 'package:flutter_learning_hub/pages/show_files.dart';
 
 
 class LearningScreen extends StatefulWidget {
@@ -20,99 +21,81 @@ class LearningScreenState extends State<LearningScreen> {
         automaticallyImplyLeading: true,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Center(
-            child: Column(
-              children: [
-                // Upload to Sciences
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,  // Set the color of the border
-                      width: 2.0,           // Set the width of the border
-                    ),
-                    borderRadius: BorderRadius.circular(10.0),  // Set the border radius
-                  ),
-                  child: Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text(AppLocalizations.of(context)!.upload_science_file),
-                                content: FileUploaderWidget(),  // TODO: add API parameters here
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Text(AppLocalizations.of(context)!.close),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                        icon: const Icon(
-                          Icons.file_upload_outlined,
-                          size: 50,
-                        ),
-                        tooltip: AppLocalizations.of(context)!.upload_file,
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.science,
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      SizedBox(height: 25),
-                    ],
-                  ),
-                )
 
-              ],
-            ),
-          ),
-
-          SizedBox(height: 25),
-
-          // Upload to News
+          // Upload file in Sciences category
           Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.black,  // Set the color of the border
-                width: 2.0,           // Set the width of the border
+                color: Theme.of(context).colorScheme.tertiary,
+                width: 2.0,
               ),
-              borderRadius: BorderRadius.circular(10.0),  // Set the border radius
+              borderRadius: BorderRadius.circular(10.0),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text(AppLocalizations.of(context)!.upload_news_file),
-                        content: FileUploaderWidget(),  // TODO: add API parameters here
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text(AppLocalizations.of(context)!.close),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-                  icon: const Icon(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text(AppLocalizations.of(context)!.upload_science_file),
+                          content: FileUploaderWidget(),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(AppLocalizations.of(context)!.close),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  icon: Icon(
                     Icons.file_upload_outlined,
+                    semanticLabel: AppLocalizations.of(context)!.upload_science_file,
+                    size: 50,
+                  ),
+                  tooltip: AppLocalizations.of(context)!.upload_file,
+                ),
+                Text(
+                  AppLocalizations.of(context)!.science,
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(height: 25),
+
+               // Upload file in News category
+                IconButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text(AppLocalizations.of(context)!.upload_news_file),
+                          content: FileUploaderWidget(),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(AppLocalizations.of(context)!.close),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  icon: Icon(
+                    Icons.file_upload_outlined,
+                    semanticLabel: AppLocalizations.of(context)!.upload_news_file,
                     size: 50,
                   ),
                   tooltip: AppLocalizations.of(context)!.upload_file,
@@ -123,51 +106,77 @@ class LearningScreenState extends State<LearningScreen> {
                     fontSize: 20,
                   ),
                 ),
-              ],
-            ),
+                 SizedBox(height: 25),
+
+                // Upload file in Entertainment category 
+                IconButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text(AppLocalizations.of(context)!.upload_entertainment_file),
+                          content: FileUploaderWidget(),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(AppLocalizations.of(context)!.close),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  icon: Icon(
+                    Icons.file_upload_outlined,
+                    semanticLabel: AppLocalizations.of(context)!.upload_entertainment_file,
+                    size: 50,
+                  ),
+                  tooltip: AppLocalizations.of(context)!.upload_file,
+                ),
+                Text(
+                  AppLocalizations.of(context)!.entertainment,
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                ],
           ),
+        ),
 
-          SizedBox(height: 25),
-
-          // Upload to Entertainment
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,  // Set the color of the border
-                width: 2.0,           // Set the width of the border
-              ),
-              borderRadius: BorderRadius.circular(10.0),  // Set the border radius
+        // View files
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).colorScheme.tertiary,
+              width: 2.0,
             ),
-            child: Column(
-              children: [
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Column(
+            children: [
               IconButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text(AppLocalizations.of(context)!.upload_entertainment_file),
-                        content: FileUploaderWidget(),  // TODO: add API parameters here
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text(AppLocalizations.of(context)!.close),
-                          ),
-                        ],
-                      );
-                    },
-                  );
+              onPressed: () {
+                Navigator.pop(context);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ShowFiles(),
+                  )
+                );
                 },
-                icon: const Icon(
-                  Icons.file_upload_outlined,
+                icon: Icon(
+                  Icons.folder_special_rounded,
+                  semanticLabel: "Go to files",
                   size: 50,
                 ),
-                tooltip: AppLocalizations.of(context)!.upload_file,
+                tooltip: "Go to files",
               ),
               Text(
-                AppLocalizations.of(context)!.entertainment,
+                "Go to files ->",
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -175,10 +184,10 @@ class LearningScreenState extends State<LearningScreen> {
             ],
           ),
         ),
-        ]
-      ),
-      bottomNavigationBar: BottomWidget(),
-      drawer: const MyDrawer(),
+      ],
+    ),
+    bottomNavigationBar: BottomWidget(),
+    drawer: const MyDrawer(),
     );
   }
 }

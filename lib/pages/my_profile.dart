@@ -84,6 +84,7 @@ class MyProfile extends StatelessWidget {
     return null;
   }
 
+  // add (or modify) name
   void edit(context) async{
     final TextEditingController displayNameController = TextEditingController();
 
@@ -140,6 +141,7 @@ class MyProfile extends StatelessWidget {
     );
   }
 
+  // modify the username
   Future<void> editUser(context, displayNameController) async {
     try {
       ///--- Edit User Account ---///
@@ -191,7 +193,7 @@ class MyProfile extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop(false); 
               },
-              child: Text(AppLocalizations.of(context)!.cancel),
+              child:Text(AppLocalizations.of(context)!.cancel),
             ),
 
             TextButton(
@@ -223,7 +225,6 @@ class MyProfile extends StatelessWidget {
   }
 
   Future<void> deleteUser(context, passwordController, mail, uid) async {
-
     try {
       ///--- Delete User Account ---///
       AuthCredential credential = EmailAuthProvider.credential(
@@ -316,7 +317,7 @@ class MyProfile extends StatelessWidget {
                   top: 0,
                   right: 0,
                   child: IconButton(
-                    icon: Icon(Icons.edit),
+                    icon: Icon(Icons.edit, semanticLabel: AppLocalizations.of(context)!.edit_profile),
                     tooltip: AppLocalizations.of(context)!.edit_profile,
                     color: Theme.of(context).colorScheme.tertiary,
                     onPressed: () => edit(context),
@@ -337,7 +338,7 @@ class MyProfile extends StatelessWidget {
                 ),
                 leading: Padding( 
                   padding: const EdgeInsets.only(left: 20),
-                  child: const Icon(Icons.logout)
+                  child: Icon(Icons.logout, semanticLabel: AppLocalizations.of(context)!.logout)
                 ),
                 onTap: () => logout(context),
               ),
@@ -355,7 +356,7 @@ class MyProfile extends StatelessWidget {
                   tileColor: Colors.red,
                   leading: Padding( 
                     padding: const EdgeInsets.only(left: 20),
-                    child: const Icon(Icons.delete),
+                    child: Icon(Icons.delete, semanticLabel: AppLocalizations.of(context)!.delete_account),
                   ),
                   onTap: () => delete(context)
                 ),

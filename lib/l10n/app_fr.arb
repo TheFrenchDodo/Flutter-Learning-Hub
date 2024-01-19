@@ -20,7 +20,7 @@
     "my_profile": "M O N  P R O F I L",
     "delete_account": "Supprimer mon compte",
     "contact_page": "Contacts",
-    "welcome_back": "Content de vous revoir !",
+    "welcome_back": "Content de vous revoir",
     "password": "Mot de passe",
     "not_a_member": "Pas encore membre ? ",
     "register_now": "S'inscrire ici",
@@ -50,5 +50,10 @@
     "upload_entertainment_file": "Chargez un fichier dans la category divertissement",
     "upload_news_file": "Chargez un fichier dans la category actualités",
     "upload_science_file": "Chargez un fichier dans la category sciences",
-    "close": "Fermer"
+    "close": "Fermer",
+    "select_file": "Choisissez un fichier",
+    "selected_bestand": "Fichier sélecitionné",
+    "loading": "Chargement...",
+    "return_button": "Retour",
+    "view_files": "Voir les fichiers"
 }

@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_learning_hub/models/message.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 
 class ChatService{
   // get final instance of firestore and auth
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
   //get user stream
   Stream<List<Map<String,dynamic>>> getUsersStream(){
@@ -16,6 +19,15 @@ class ChatService{
 
         return user;
       }).toList();
+    });
+  }
+
+  // update the FCM token in the user's document
+  Future<void> updateFCMToken(String fcmToken) async {
+    final String currentUserID = _auth.currentUser!.uid;
+
+    await _firestore.collection("Users").doc(currentUserID).update({
+      'fcmToken': fcmToken,
     });
   }
 
@@ -47,6 +59,10 @@ class ChatService{
     .doc(chatRoomID)
     .collection("messages")
     .add(newMessage.toMap());
+    
+    // send notification
+    // sendNotification(receiverID, newMessage.message);
+
   }
 
   // get message
@@ -62,5 +78,26 @@ class ChatService{
     .orderBy("timestamp", descending: false)
     .snapshots();
   }
+
+  //   Future<void> sendNotification(String receiverID, String message) async {
+  //   // retrieve the receiver's FCM token from the database
+  //   DocumentSnapshot receiverDoc =
+  //       await _firestore.collection("Users").doc(receiverID).get();
+
+  //   String? receiverFCMToken = receiverDoc.data()?['fcmToken'];
+
+  //   if (receiverFCMToken != null) {
+  //     // send FCM message
+  //     await _firebaseMessaging.sendMessage(
+  //       to: receiverFCMToken,
+  //       data: {
+  //         'title': 'New Message',
+  //         'body': message,
+  //         'click_action': 'FLUTTER_NOTIFICATION_CLICK',
+  //       },
+  //     );
+  //   }
+  // }
+
 
 }

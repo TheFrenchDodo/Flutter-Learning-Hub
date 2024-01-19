@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget{
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
-                title: Text(e.toString()),
+                title: Center(child:Text(e.toString()),)
               ),
             );
           }
@@ -48,7 +48,7 @@ class LoginPage extends StatelessWidget{
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
-                title: Text(e.toString()),
+                title: Center(child:Text(e.toString()),)
               ),
             );
           }
@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget{
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
-                title: Text(e.toString()),
+                title: Center(child:Text(e.toString()),)
               ),
             );
           }
@@ -77,7 +77,6 @@ class LoginPage extends StatelessWidget{
       ),
 
        body: Center(
-        // child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -178,7 +177,6 @@ class LoginPage extends StatelessWidget{
             ],
           ),
         ),
-      )
-      ;
+      );
   }
 }

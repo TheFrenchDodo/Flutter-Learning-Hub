@@ -73,7 +73,7 @@
     "@contact_page":{
       "description": "List of all the contacts"
     },
-    "welcome_back": "Hi, welcome back !",
+    "welcome_back": "Hi, welcome back",
     "@welcome_back": {
       "description": "Welcome back message"
     },
@@ -200,5 +200,25 @@
     "close": "Close",
     "@close":{
       "description": "Asking the user to close the page"
+    },
+    "select_file": "Select a file",
+    "@select_file":{
+      "description": "Asking the user to select a file to upload"
+    },
+    "selected_file": "Selected file",
+    "@selected_file":{
+      "description": "Asking the user to select a file to upload"
+    },
+    "loading": "Loading...",
+    "@loading":{
+      "description": "Telling the user to wait"
+    },
+    "return_button": "Return",
+    "@return_button":{
+      "description": "return button"
+    },
+    "view_files": "View files",
+    "@view_files":{
+      "description": "View files"
     }
   }
