@@ -27,14 +27,7 @@ class FileUploaderWidgetState extends State<FileUploaderWidget> {
   Future<void> _uploadFile() async {
     try{
       if (_selectedFile != null) {
-
-
-      // _firestore.collection("Files").doc().set(
-      //   {
-      //     "uid": userCredential.user!.uid,
-      //     "email": email,
-      //   },
-      // );
+        // TODO
       }
     }
     catch (e) {
