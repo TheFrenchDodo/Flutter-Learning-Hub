@@ -63,9 +63,14 @@ Alternatively, you can locate the APK file in the build/app/outputs/flutter-apk 
 ### Usage
 
 Any user of the application registers with an email address.
-The main function is to share documents, of any type. The documents are listed by category, for the moment only "Science", "news" and "entertainment" exist, but others will appear with the possibility of searching by keyword to easily find this or that article. The concept was designed to easily communicate between teacher and student, however this is not limited to schools. Anyone can have access to it.
-Sometimes a teacher may not want to share their course publicly, a password feature to access certain documents will also be deployed.
-Once registered, users have access to a messaging platform to facilitate communication between them.
+
+The main function is to share documents, of any type. The documents are listed by category, for the moment only "Science", "News" and "Entertainment" exist, but others will appear. Searching by keyword to easily find an article, will also come with a future update. 
+
+Learning Hub was designed to easily communicate between teacher and student, however this should not limited to schools. Anyone should have access to it.
+
+But when teacher may not want to share their course publicly, the feature to set a password to access certain documents will also be deployed.
+
+Once registered, users have access to the build-in messaging platform to facilitate communication between users.
 
 ### Contributing
 
